@@ -1,0 +1,737 @@
+/* ==========================================================================
+   BUYHATKE FLIGHTS COMPARISON - FLIGHTS.CSS
+   ========================================================================== */
+
+.flights-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 14px 16px 24px;
+}
+
+/* Flight Search Card */
+.flight-search-card {
+  background: var(--bh-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.flight-cities-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.city-select-box {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.city-select-box:hover {
+  border-color: var(--bh-cyan);
+}
+.city-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.city-code {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+.city-name {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.flight-swap-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 210, 211, 0.1);
+  border: 1px solid var(--border-active);
+  color: var(--bh-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.flight-swap-btn:hover {
+  transform: rotate(180deg);
+}
+
+.flight-date-class-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.info-field-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.info-field-box label {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.info-field-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Flight Sector Presets */
+.flight-sector-pills {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.flight-sector-pills::-webkit-scrollbar {
+  display: none;
+}
+.flight-sector-pill {
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.flight-sector-pill.active {
+  background: rgba(0, 210, 211, 0.15);
+  border-color: var(--bh-cyan);
+  color: #fff;
+}
+
+/* Flights Ticket Cards */
+.flights-ticket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.flight-ticket-card {
+  background: var(--bh-surface-card);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.2s;
+}
+.flight-ticket-card:hover {
+  border-color: rgba(0, 210, 211, 0.35);
+  transform: translateY(-2px);
+}
+
+.flight-ticket-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.airline-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.airline-badge img {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+.airline-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+.flight-number-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Flight Schedule Layout */
+.flight-schedule-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+.flight-time-col {
+  display: flex;
+  flex-direction: column;
+}
+.flight-time {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+}
+.flight-station {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.flight-duration-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  padding: 0 16px;
+}
+.duration-label {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.duration-line {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+.duration-line::after {
+  content: '✈';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  color: var(--bh-cyan);
+}
+.stops-label {
+  font-size: 10px;
+  color: var(--bh-green);
+  font-weight: 600;
+}
+
+/* Multi-Portal Fare Matrix */
+.flight-portal-matrix {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+}
+.portal-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+  padding: 4px 2px;
+  border-radius: var(--radius-xs);
+}
+.portal-col.cheapest {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+.portal-logo-mini {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+.portal-name-sub {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+.portal-fare-price {
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+}
+.portal-promo-tag {
+  font-size: 8px;
+  color: var(--bh-yellow);
+  font-weight: 700;
+}
+
+.flight-book-action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 6px;
+}
+.lowest-deal-text {
+  font-size: 12px;
+  color: var(--bh-green);
+  font-weight: 700;
+}
+.flight-select-btn {
+  background: linear-gradient(135deg, var(--bh-cyan), #00a8a9);
+  color: #0b132b;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.flight-select-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Header Row & My Bookings Action Button */
+.flight-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.flight-header-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.flight-bookings-btn {
+  background: rgba(0, 210, 211, 0.12);
+  color: var(--bh-cyan);
+  border: 1px solid rgba(0, 210, 211, 0.35);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
+}
+.flight-bookings-btn:hover {
+  background: var(--bh-cyan);
+  color: #0B132B;
+}
+
+/* ==========================================================================
+   IN-APP TRAVEL BOOKING, BOARDING PASS & BOOKINGS HISTORY MODALS
+   ========================================================================== */
+.flight-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: flightFadeIn 0.2s ease;
+}
+
+@keyframes flightFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes flightSlideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.flight-modal-sheet {
+  background: #FFFFFF;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: flightSlideUp 0.25s ease;
+}
+
+.flight-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.flight-modal-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flight-modal-close {
+  background: #F1F5F9;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748B;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+.flight-modal-close:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+/* Flight Details Summary Strip */
+.flight-summary-strip {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.flight-strip-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flight-strip-airline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #0F172A;
+}
+.flight-strip-airline img {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+}
+.flight-strip-sector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #334155;
+  font-weight: 600;
+}
+
+/* Passenger Input Fields */
+.passenger-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.passenger-input-box {
+  width: 100%;
+  height: 38px;
+  background: #F8FAFC;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 10px;
+  padding: 0 12px;
+  font-family: inherit;
+  font-size: 12.5px;
+  color: #0F172A;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.passenger-input-box:focus {
+  border-color: #5855E5;
+  background: #FFFFFF;
+}
+
+/* Seat Selector Grid */
+.seat-selector-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.seat-selector-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #475569;
+  text-transform: uppercase;
+}
+.seat-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.seat-chip {
+  background: #F8FAFC;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 10px;
+  padding: 8px 4px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: all 0.15s;
+}
+.seat-chip.active {
+  background: #EEF2FF;
+  border-color: #5855E5;
+  box-shadow: 0 0 0 2px rgba(88, 85, 229, 0.2);
+}
+.seat-chip-code {
+  font-size: 12px;
+  font-weight: 800;
+  color: #0F172A;
+}
+.seat-chip.active .seat-chip-code {
+  color: #4338CA;
+}
+.seat-chip-type {
+  font-size: 9px;
+  color: #64748B;
+  font-weight: 600;
+}
+.seat-chip.active .seat-chip-type {
+  color: #6366F1;
+}
+
+/* Price Breakdown in Modal */
+.flight-bill-breakdown {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.flight-bill-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11.5px;
+  color: #475569;
+}
+.flight-bill-row.total-row {
+  margin-top: 4px;
+  padding-top: 6px;
+  border-top: 1px dashed #CBD5E1;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+/* Book Action Button */
+.flight-confirm-pay-btn {
+  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+  transition: opacity 0.15s;
+}
+.flight-confirm-pay-btn:hover {
+  opacity: 0.95;
+}
+
+/* ==========================================================================
+   OFFICIAL BOARDING PASS DESIGN
+   ========================================================================== */
+.boarding-pass-card {
+  background: #FFFFFF;
+  border: 1.5px solid #0284C7;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+.boarding-pass-header {
+  background: linear-gradient(135deg, #0369A1 0%, #0C4A6E 100%);
+  color: #FFFFFF;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bp-airline-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+}
+.bp-pnr-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.boarding-pass-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.bp-route-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #CBD5E1;
+}
+.bp-station-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.bp-city-code {
+  font-size: 22px;
+  font-weight: 900;
+  color: #0F172A;
+}
+.bp-city-time {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0284C7;
+}
+.bp-flight-plane-icon {
+  font-size: 20px;
+  color: #0284C7;
+}
+.bp-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  font-size: 11px;
+}
+.bp-info-item label {
+  color: #64748B;
+  font-size: 9.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block;
+}
+.bp-info-item strong {
+  color: #0F172A;
+  font-size: 12px;
+}
+
+/* Perforated Fold Line */
+.bp-perforated-divider {
+  position: relative;
+  border-top: 2px dashed #CBD5E1;
+  margin: 4px 0;
+}
+.bp-perforated-divider::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: -10px;
+  width: 18px;
+  height: 18px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  border: 1.5px solid #0284C7;
+}
+.bp-perforated-divider::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: -10px;
+  width: 18px;
+  height: 18px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  border: 1.5px solid #0284C7;
+}
+
+.boarding-pass-barcode-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F8FAFC;
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+.bp-barcode-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+}
+.bp-security-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  font-size: 10px;
+  color: #16A34A;
+  font-weight: 700;
+}
+
+/* Travel History List Item */
+.travel-history-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+}
+.travel-history-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.travel-history-pnr {
+  font-size: 12px;
+  font-weight: 800;
+  color: #0284C7;
+}
+.travel-history-sector {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #0F172A;
+}

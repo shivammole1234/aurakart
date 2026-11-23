@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="22" fill="#006491"/>
+  <g transform="translate(50, 50) rotate(-22) translate(-25, -36)">
+    <!-- Top red square with 1 dot -->
+    <rect x="0" y="0" width="50" height="34" rx="6" fill="#E31837"/>
+    <circle cx="25" cy="17" r="5" fill="#FFFFFF"/>
+    <!-- Bottom red square with 2 dots -->
+    <rect x="0" y="38" width="50" height="34" rx="6" fill="#E31837"/>
+    <circle cx="15" cy="55" r="5" fill="#FFFFFF"/>
+    <circle cx="35" cy="55" r="5" fill="#FFFFFF"/>
+  </g>
+</svg>

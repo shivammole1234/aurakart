@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="22" fill="#E51A4C"/>
+  <g transform="translate(24, 25)">
+    <!-- White cinema ticket with my -->
+    <path d="M0 8C0 3.5 3.5 0 8 0H44C48.5 0 52 3.5 52 8V18C48 18 45 21 45 25C45 29 48 32 52 32V42C52 46.5 48.5 50 44 50H8C3.5 50 0 46.5 0 42V32C4 32 7 29 7 25C7 21 4 18 0 18V8Z" fill="#FFFFFF"/>
+    <text x="26" y="32" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="900" font-size="19" fill="#E51A4C" text-anchor="middle" font-style="italic">my</text>
+  </g>
+</svg>

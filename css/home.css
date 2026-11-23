@@ -1,0 +1,447 @@
+/* ==========================================================================
+   OFFICIAL BUYHATKE HOME SCREEN - HOME.CSS (EXACT 1:1 REPLICA)
+   ========================================================================== */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 85px 0; /* padding for floating bottom nav */
+  background: #FFFFFF;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 1. HERO POSTER BANNER */
+.bh-hero-poster-wrapper {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, #6BCBFF 0%, #D4F1FF 100%);
+  overflow: hidden;
+  border-radius: 0 0 24px 24px;
+}
+
+.hero-poster-art {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-poster-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 380px;
+}
+
+/* Red Interactive KNOW MORE Pill Button on Poster */
+.know-more-cta-overlay {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #EF233C 0%, #D90429 100%);
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  border-radius: 999px;
+  padding: 9px 24px;
+  font-family: var(--font-main);
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(217, 4, 41, 0.45), 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+}
+
+.know-more-cta-overlay:hover {
+  transform: translateX(-50%) scale(1.04);
+  box-shadow: 0 8px 24px rgba(217, 4, 41, 0.55);
+}
+
+.know-more-cta-overlay:active {
+  transform: translateX(-50%) scale(0.97);
+}
+
+.play-triangle {
+  font-size: 10px;
+  background: #FFFFFF;
+  color: #D90429;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2px;
+}
+
+/* 2. FLOATING SEARCH & URL BAR */
+.home-search-bar-wrap {
+  padding: 14px 16px 8px;
+  position: relative;
+  z-index: 20;
+}
+
+.home-search-pill {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 999px;
+  padding: 7px 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.home-search-pill:focus-within {
+  border-color: #5855E5;
+  box-shadow: 0 4px 20px rgba(88, 85, 229, 0.15);
+}
+
+.search-glass-icon {
+  width: 20px;
+  height: 20px;
+  color: #5855E5;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.home-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: var(--font-main);
+  font-size: 13px;
+  color: #0F172A;
+  background: transparent;
+  min-width: 0;
+}
+
+.home-search-input::placeholder {
+  color: #94A3B8;
+  font-size: 12.5px;
+}
+
+.search-divider-line {
+  width: 1px;
+  height: 22px;
+  background: #E2E8F0;
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+.search-action-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #5855E5;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.search-action-btn:hover {
+  background: #EFEFFF;
+}
+
+.search-action-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* 3. COMPARISON CATEGORY GRID (3 COLUMNS X 2 ROWS) */
+.compare-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 10px 16px 12px;
+}
+
+.service-card-item {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid #EDF2F7;
+  border-radius: 20px;
+  padding: 16px 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card-item:hover {
+  transform: translateY(-2px);
+  border-color: #5855E5;
+  box-shadow: 0 6px 16px rgba(88, 85, 229, 0.1);
+}
+
+.service-card-item:active {
+  transform: scale(0.97);
+}
+
+.service-card-icon-wrap {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-card-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.service-card-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1E293B;
+  text-align: center;
+  line-height: 1.25;
+}
+
+/* Badges on Service Cards */
+.service-badge-pill {
+  position: absolute;
+  top: -6px;
+  right: 10px;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 999px;
+  letter-spacing: 0.2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.badge-hot {
+  background: linear-gradient(135deg, #FF5722 0%, #F44336 100%);
+  color: #FFFFFF;
+}
+
+.badge-new {
+  background: #3B82F6;
+  color: #FFFFFF;
+}
+
+.badge-beta {
+  background: #10B981;
+  color: #FFFFFF;
+}
+
+/* VIEW ALL BUTTON */
+.view-all-row {
+  display: flex;
+  justify-content: center;
+  padding: 4px 16px 14px;
+}
+
+.view-all-btn {
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  color: #1E293B;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 999px;
+  transition: all 0.15s;
+}
+
+.view-all-btn:hover {
+  background: #F1F5F9;
+  color: #5855E5;
+}
+
+.view-all-dots-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* 4. SUPER BROWSE DARK SECTION (EXACT SCREENSHOT IMAGE 2) */
+.super-browse-dark-section {
+  background: #13161F;
+  border-radius: 28px 28px 0 0;
+  padding: 24px 16px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #FFFFFF;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.super-browse-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.super-browse-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #FFFFFF;
+}
+
+.super-browse-subtitle {
+  font-size: 12.5px;
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-weight: 500;
+}
+
+.inline-mascot-img {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tm-mark {
+  font-size: 9px;
+  vertical-align: super;
+}
+
+/* 16 APPS GRID (4 COLUMNS X 4 ROWS) */
+.super-browse-grid-16 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px 10px;
+  padding: 6px 0;
+}
+
+.super-app-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.super-app-box:hover {
+  transform: translateY(-3px);
+}
+
+.super-app-box:active {
+  transform: scale(0.95);
+}
+
+.app-icon-wrap {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  overflow: visible;
+}
+
+.app-icon-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 17px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Green Discount/Cashback Badge on top-right of app icon */
+.app-cashback-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #22C55E;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.app-name-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 68px;
+  letter-spacing: -0.1px;
+}
+
+/* Powered by Smart Checkout Pill */
+.smart-checkout-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.smart-checkout-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #E8F8EE;
+  border: 1px solid rgba(0, 131, 87, 0.25);
+  border-radius: 999px;
+  padding: 7px 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.smart-checkout-pill:hover {
+  background: #D5F5E0;
+  transform: scale(1.02);
+}
+
+.checkout-check-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #008357;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #008357;
+  letter-spacing: -0.1px;
+}

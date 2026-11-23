@@ -1,0 +1,108 @@
+<!-- OFFICIAL BUYHATKE PRICE HISTORY & TRACKER TAB -->
+<div class="shopping-container" id="shopping-view">
+  <!-- Search or Paste Product URL -->
+  <div class="product-search-wrapper">
+    <input type="text" id="shopping-search-input" class="product-search-input" placeholder="Search product or paste Amazon / Flipkart URL...">
+    <div class="search-action-icon" id="shopping-search-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Popular Products -->
+  <div class="product-chips-scroll" id="product-chips-container">
+    <div class="product-chip active" data-id="p1">Apple iPhone 16</div>
+    <div class="product-chip" data-id="p2">Sony WH-1000XM5</div>
+    <div class="product-chip" data-id="p3">MacBook Air M3</div>
+    <div class="product-chip" data-id="p4">Samsung Galaxy S24 Ultra</div>
+  </div>
+
+  <!-- Product Details Hero Card -->
+  <div class="product-hero-card" id="product-hero-card">
+    <div class="product-hero-top">
+      <div class="product-hero-img-wrap">
+        <img id="product-img-el" src="" alt="Product Image">
+      </div>
+      <div class="product-hero-details">
+        <h3 class="product-name-title" id="product-title-el">Product Title</h3>
+        <p class="product-specs-sub" id="product-specs-el">Specs description</p>
+        <div class="product-prices-row">
+          <span class="product-curr-price" id="product-best-price-el">₹0</span>
+          <span class="product-mrp-strike" id="product-mrp-el">MRP ₹0</span>
+          <span class="badge-cheapest" id="product-savings-badge">BEST PRICE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deal Verdict Banner -->
+    <div class="bh-verdict-banner">
+      <span class="verdict-icon">💡</span>
+      <span class="verdict-text" id="product-verdict-el">Analyzing price history...</span>
+    </div>
+
+    <!-- Official Price History Graph -->
+    <div class="price-graph-container">
+      <div class="graph-header">
+        <div class="graph-title">
+          <span>📈 Price History Graph</span>
+        </div>
+        <div class="graph-timeframe-pills">
+          <span class="graph-tf-pill" data-days="30">30D</span>
+          <span class="graph-tf-pill" data-days="60">60D</span>
+          <span class="graph-tf-pill active" data-days="90">90D</span>
+          <span class="graph-tf-pill" data-days="180">180D</span>
+        </div>
+      </div>
+
+      <div class="graph-canvas-wrap">
+        <canvas id="price-history-canvas"></canvas>
+      </div>
+
+      <!-- Graph Statistics -->
+      <div class="graph-stats-row">
+        <div class="graph-stat-box">
+          <span class="graph-stat-label">Lowest Ever</span>
+          <span class="graph-stat-val lowest" id="stat-lowest-el">₹0</span>
+        </div>
+        <div class="graph-stat-box">
+          <span class="graph-stat-label">90-Day Avg</span>
+          <span class="graph-stat-val" id="stat-average-el">₹0</span>
+        </div>
+        <div class="graph-stat-box">
+          <span class="graph-stat-label">Highest Ever</span>
+          <span class="graph-stat-val highest" id="stat-highest-el">₹0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="shopping-actions-row">
+      <button class="action-card-btn" id="btn-set-price-alert">
+        <span>🔔</span> Set Drop Alert
+      </button>
+      <button class="action-card-btn" id="btn-test-auto-coupons">
+        <span>⚡</span> Test Coupons
+      </button>
+    </div>
+  </div>
+
+  <!-- Look-A-Like Finder Card -->
+  <div class="lookalike-card">
+    <div>
+      <div class="lookalike-title">🛍️ Look-A-Like Finder</div>
+      <div class="lookalike-sub">Found 4 cheaper alternative dupes on Meesho & Ajio</div>
+    </div>
+    <button class="lookalike-btn" onclick="window.BH_APP.showToast('🔍 Found 3 dupes starting at ₹1,499 on Meesho!')">View Dupes</button>
+  </div>
+
+  <!-- Multi-Store Price Comparison Matrix -->
+  <div class="section-header-row">
+    <h4 class="section-title">🏪 Available Stores Comparison</h4>
+    <span class="section-see-all" id="refresh-store-prices">Refresh Live 🔄</span>
+  </div>
+  <div class="store-comparisons-list" id="stores-comparison-list">
+    <!-- Populated dynamically by js/shopping.js -->
+  </div>
+</div>

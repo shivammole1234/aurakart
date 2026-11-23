@@ -1,0 +1,366 @@
+/* ==========================================================================
+   OFFICIAL BUYHATKE PRICE HISTORY & TRACKER - SHOPPING.CSS
+   ========================================================================== */
+
+.shopping-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px 14px 20px;
+}
+
+/* Product Search Bar */
+.product-search-wrapper {
+  position: relative;
+}
+.product-search-input {
+  width: 100%;
+  height: 44px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0 40px 0 12px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text-primary);
+  outline: none;
+  box-shadow: var(--shadow-sm);
+}
+.product-search-input:focus {
+  border-color: var(--bh-primary);
+}
+.search-action-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--bh-primary);
+  cursor: pointer;
+}
+
+/* Product Picker Chips */
+.product-chips-scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.product-chips-scroll::-webkit-scrollbar {
+  display: none;
+}
+.product-chip {
+  padding: 5px 12px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.product-chip.active {
+  background: var(--bh-primary);
+  color: #FFFFFF;
+  border-color: var(--bh-primary);
+}
+
+/* Hero Product Card */
+.product-hero-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.product-hero-top {
+  display: flex;
+  gap: 12px;
+}
+.product-hero-img-wrap {
+  width: 84px;
+  height: 84px;
+  border-radius: var(--radius-sm);
+  background: var(--bh-bg-soft);
+  border: 1px solid var(--border-card);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.product-hero-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-hero-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.product-name-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+.product-specs-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.product-prices-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 4px;
+}
+.product-curr-price {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--bh-green);
+}
+.product-mrp-strike {
+  font-size: 11px;
+  color: var(--text-dim);
+  text-decoration: line-through;
+}
+
+/* Official Buyhatke Deal Verdict Banner */
+.bh-verdict-banner {
+  background: var(--bh-primary-light);
+  border: 1px solid var(--bh-primary-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.verdict-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.verdict-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--bh-primary);
+}
+
+/* Buyhatke Signature Price Graph Card */
+.price-graph-container {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.graph-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.graph-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.graph-timeframe-pills {
+  display: flex;
+  gap: 4px;
+}
+.graph-tf-pill {
+  padding: 2px 7px;
+  border-radius: var(--radius-xs);
+  background: var(--bh-bg-soft);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.graph-tf-pill.active {
+  background: var(--bh-primary);
+  color: #fff;
+}
+
+.graph-canvas-wrap {
+  width: 100%;
+  height: 160px;
+  position: relative;
+  background: #FAFAFC;
+  border-radius: var(--radius-sm);
+}
+.graph-canvas-wrap canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Graph Stats Row */
+.graph-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border-card);
+}
+.graph-stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--bh-bg-soft);
+  padding: 5px 3px;
+  border-radius: var(--radius-xs);
+}
+.graph-stat-label {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.graph-stat-val {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+.graph-stat-val.lowest {
+  color: var(--bh-green);
+}
+.graph-stat-val.highest {
+  color: var(--bh-red);
+}
+
+/* Actions Row */
+.shopping-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.action-card-btn {
+  background: var(--bh-primary-light);
+  border: 1px solid var(--bh-primary-border);
+  border-radius: var(--radius-sm);
+  padding: 9px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--bh-primary);
+  cursor: pointer;
+}
+
+/* Look-A-Like Section */
+.lookalike-card {
+  background: #FFF7ED;
+  border: 1px solid #FFEDD5;
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.lookalike-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: #C2410C;
+}
+.lookalike-sub {
+  font-size: 11px;
+  color: #9A3412;
+}
+.lookalike-btn {
+  background: #EA580C;
+  color: #fff;
+  border: none;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Store Listing Card */
+.store-comparisons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.store-listing-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+}
+.store-listing-card.is-lowest {
+  border-color: rgba(0, 131, 87, 0.4);
+  background: linear-gradient(180deg, #FAFCFA 0%, #FFFFFF 100%);
+}
+.store-listing-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.store-listing-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: #fff;
+  padding: 2px;
+  border: 1px solid var(--border-card);
+  object-fit: contain;
+}
+.store-listing-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.store-listing-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.store-listing-sub {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.store-listing-coupon {
+  font-size: 10px;
+  color: var(--bh-orange);
+  font-weight: 600;
+}
+.store-listing-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+.store-listing-price {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+.store-buy-now-btn {
+  background: var(--bh-primary);
+  color: #FFFFFF;
+  border: none;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+}

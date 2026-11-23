@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g transform="translate(16, 20)">
+    <!-- Back Gift Card (Orange) -->
+    <g transform="rotate(18 36 28)">
+      <rect x="10" y="6" width="50" height="32" rx="6" fill="#F59E0B"/>
+      <rect x="10" y="16" width="50" height="7" fill="#B45309"/>
+      <circle cx="50" cy="28" r="4" fill="#FDE68A"/>
+    </g>
+    <!-- Front Gift Card (Blue) -->
+    <g transform="rotate(-12 30 32)">
+      <rect x="4" y="12" width="52" height="34" rx="6" fill="#3B82F6"/>
+      <rect x="4" y="24" width="52" height="8" fill="#1D4ED8"/>
+      <!-- Gift Bow / Ribbon -->
+      <path d="M26 12V46M4 29H56" stroke="#93C5FD" stroke-width="3"/>
+      <circle cx="26" cy="29" r="5" fill="#FDE047"/>
+      <text x="44" y="40" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="7" fill="#FFFFFF">GIFT</text>
+    </g>
+    <!-- Sparkles -->
+    <path d="M58 8L60 2L62 8L68 10L62 12L60 18L58 12L52 10Z" fill="#FDE047"/>
+    <path d="M4 48L6 44L8 48L12 50L8 52L6 56L4 52L0 50Z" fill="#FDE047"/>
+  </g>
+</svg>

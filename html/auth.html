@@ -1,0 +1,99 @@
+<!-- OFFICIAL BUYHATKE AUTHENTICATION & REAL OTP MODAL -->
+<div class="auth-modal-wrapper" id="auth-modal">
+  <div class="auth-card-body">
+    <button class="auth-close-btn" id="auth-modal-close-btn">✕</button>
+
+    <div class="auth-brand-center">
+      <img src="assets/icons/buyhatke.svg" alt="Buyhatke" class="auth-brand-logo">
+      <h3 class="auth-heading" id="auth-title">Login or Sign Up</h3>
+      <p class="auth-sub" id="auth-subtitle">Verify with real OTP to sync Zepto, Blinkit & Uber</p>
+    </div>
+
+    <!-- STEP 1: Phone Number Input -->
+    <div id="auth-step-phone" style="display: flex; flex-direction: column; gap: 12px;">
+      <div class="phone-input-row">
+        <div class="phone-prefix">
+          <span class="phone-flag">🇮🇳</span>
+          <span>+91</span>
+        </div>
+        <input type="tel" id="auth-phone-input" class="phone-field-input" placeholder="Enter 10-digit mobile number" maxlength="10" autocomplete="tel">
+      </div>
+
+      <button class="auth-submit-btn" id="btn-request-otp">
+        <span>Get OTP Verification Code ➔</span>
+      </button>
+
+      <!-- Optional Cellular SMS Gateway Config Accordion -->
+      <div class="sms-gateway-box">
+        <div class="sms-gateway-title">
+          <span>📡 Cellular SMS Delivery</span>
+          <span style="font-size: 10px; color: var(--bh-primary); cursor: pointer;" onclick="document.getElementById('sms-api-panel').style.display = document.getElementById('sms-api-panel').style.display === 'none' ? 'flex' : 'none';">Configure Key ⚙️</span>
+        </div>
+        <div id="sms-api-panel" style="display: none; flex-direction: column; gap: 6px; margin-top: 4px;">
+          <input type="text" id="sms-api-key-input" class="sms-gateway-input" placeholder="Paste Fast2SMS or 2Factor API Key here...">
+          <button type="button" class="auth-submit-btn" style="height: 28px; font-size: 10px; background: #008357;" onclick="window.BH_AUTH.saveSmsGatewayKey()">Save Gateway Key</button>
+          <span style="font-size: 9px; color: var(--text-muted);">When key is saved, OTP is dispatched directly as a real cellular SMS to your phone SIM.</span>
+        </div>
+      </div>
+
+      <p style="font-size: 10px; color: var(--text-dim); text-align: center;">
+        By continuing, you agree to Buyhatke's Terms of Service & Privacy Policy.
+      </p>
+    </div>
+
+    <!-- STEP 2: 6-Digit Real OTP -->
+    <div id="auth-step-otp" style="display: none; flex-direction: column; gap: 14px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-secondary);">
+        <span>Enter 6-digit code sent to <strong id="otp-sent-phone" style="color: var(--text-primary);">+91 9876543210</strong></span>
+        <button id="btn-change-phone" style="background:none; border:none; color:var(--bh-primary); cursor:pointer; font-weight:700;">Edit</button>
+      </div>
+
+      <div class="otp-inputs-grid" id="otp-inputs-container">
+        <input type="tel" class="otp-digit-field" maxlength="1" data-index="0" autofocus>
+        <input type="tel" class="otp-digit-field" maxlength="1" data-index="1">
+        <input type="tel" class="otp-digit-field" maxlength="1" data-index="2">
+        <input type="tel" class="otp-digit-field" maxlength="1" data-index="3">
+        <input type="tel" class="otp-digit-field" maxlength="1" data-index="4">
+        <input type="tel" class="otp-digit-field" maxlength="1" data-index="5">
+      </div>
+
+      <div class="resend-otp-row">
+        <span id="resend-timer-text">Resend code in 30s</span>
+        <button class="resend-btn" id="btn-resend-otp" disabled>Resend OTP</button>
+      </div>
+
+      <button class="auth-submit-btn" id="btn-verify-otp">
+        <span>Verify & Login ➔</span>
+      </button>
+
+      <div style="font-size: 11px; color: #008357; text-align: center; background: #E8F8F0; padding: 6px; border-radius: 8px; border: 1px dashed rgba(0, 131, 87, 0.3);">
+        💬 Tip: Check incoming notification banner or terminal console for your OTP code!
+      </div>
+    </div>
+
+    <!-- STEP 3: Profile Details -->
+    <div id="auth-step-profile" style="display: none; flex-direction: column; gap: 14px;">
+      <div style="background: var(--bh-bg-soft); border: 1px solid var(--border-card); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <strong style="color: var(--text-primary); font-size: 15px;" id="profile-name">Hatke Shopper</strong>
+          <span class="badge-cheapest">ACTIVE MEMBER</span>
+        </div>
+        <div style="font-size: 12px; color: var(--text-secondary);" id="profile-phone">+91 98765 43210</div>
+        <div style="display: flex; gap: 12px; margin-top: 4px; padding-top: 6px; border-top: 1px solid var(--border-card);">
+          <div>
+            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Hatke Coins</div>
+            <strong style="color: #B45309; font-size: 14px;" id="profile-coins">350 🪙</strong>
+          </div>
+          <div>
+            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Total Saved</div>
+            <strong style="color: var(--bh-green); font-size: 14px;" id="profile-savings">₹4,890</strong>
+          </div>
+        </div>
+      </div>
+
+      <button class="auth-submit-btn" id="btn-logout" style="background: #FEE2E2; color: #DC2626; border: 1px solid #FCA5A5; box-shadow: none;">
+        Log Out
+      </button>
+    </div>
+  </div>
+</div>

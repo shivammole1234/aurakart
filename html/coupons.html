@@ -1,0 +1,88 @@
+<!-- OFFICIAL BUYHATKE VERIFIED DEALS SCREEN - EXACT 1:1 REPLICA (IMAGE 3) -->
+<div class="verified-deals-screen-wrap" id="coupons-view">
+
+  <!-- 1. HEADER (BACK BUTTON, VERIFIED DEALS SHIELD, SEARCH ICON) -->
+  <div class="deals-top-header">
+    <button class="deals-back-btn" onclick="window.BH_APP.switchTab('home')" title="Back to Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+
+    <div class="deals-header-title-box">
+      <img src="assets/icons/verified_shield.svg" alt="Verified" class="verified-shield-icon">
+      <h2 class="verified-title-text">Verified Deals</h2>
+    </div>
+
+    <button class="deals-search-circle-btn" onclick="window.BH_APP.switchTab('home')" title="Search Deals">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </button>
+  </div>
+
+  <!-- 2. HORIZONTAL FILTER PILLS ROW -->
+  <div class="deals-filter-chips-scroll">
+    <!-- Filter button with sliders icon -->
+    <button class="deal-filter-chip filter-btn" id="btn-deals-filter-modal" onclick="window.BH_COUPONS.openFilterModal()">
+      <span>Filter</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="chip-svg">
+        <line x1="4" y1="21" x2="4" y2="14"></line>
+        <line x1="4" y1="10" x2="4" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12" y2="3"></line>
+        <line x1="20" y1="21" x2="20" y2="16"></line>
+        <line x1="20" y1="12" x2="20" y2="3"></line>
+        <line x1="1" y1="14" x2="7" y2="14"></line>
+        <line x1="9" y1="8" x2="15" y2="8"></line>
+        <line x1="17" y1="16" x2="23" y2="16"></line>
+      </svg>
+    </button>
+
+    <!-- New Deals Dropdown -->
+    <button class="deal-filter-chip active-dropdown" id="btn-deals-sort-dropdown" onclick="window.BH_COUPONS.toggleSortDropdown()">
+      <span>New Deals</span>
+      <span class="dropdown-chevron">⌄</span>
+    </button>
+
+    <!-- Category Pills -->
+    <button class="deal-filter-chip" data-category="Mobile Wall Chargers" onclick="window.BH_COUPONS.filterCategory('Mobile Wall Chargers')">
+      Mobile Wall Chargers
+    </button>
+
+    <button class="deal-filter-chip" data-category="Face Wash" onclick="window.BH_COUPONS.filterCategory('Face Wash')">
+      Face Wash
+    </button>
+
+    <button class="deal-filter-chip" data-category="Casual Shirts" onclick="window.BH_COUPONS.filterCategory('Casual Shirts')">
+      Casual Shirts
+    </button>
+
+    <button class="deal-filter-chip" data-category="Women Wear" onclick="window.BH_COUPONS.filterCategory('Women Wear')">
+      Women Wear
+    </button>
+
+    <button class="deal-filter-chip" data-category="Earbuds" onclick="window.BH_COUPONS.filterCategory('Earbuds')">
+      Earbuds
+    </button>
+  </div>
+
+  <!-- 3. VERIFIED DEALS 2-COLUMN GRID (EXACT SCREENSHOT LAYOUT) -->
+  <div class="verified-deals-2col-grid" id="verified-deals-grid-container">
+    <!-- Populated dynamically by js/coupons.js -->
+  </div>
+
+  <!-- Auto-Coupon Bot Banner / Drawer Toggle -->
+  <div class="deals-coupon-bot-strip" onclick="window.BH_COUPONS.toggleCouponTesterDrawer()">
+    <div class="bot-strip-left">
+      <span class="bot-emoji">🤖</span>
+      <div>
+        <div class="bot-strip-title">Buyhatke Auto-Coupon Tester</div>
+        <div class="bot-strip-sub">12 working influencer & bank promo codes ready</div>
+      </div>
+    </div>
+    <button class="bot-strip-run-btn" id="btn-run-coupon-bot">Test All ➔</button>
+  </div>
+
+</div>

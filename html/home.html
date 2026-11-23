@@ -1,0 +1,139 @@
+<!-- OFFICIAL BUYHATKE HOME SCREEN - EXACT 1:1 REPLICA -->
+<div class="home-container" id="home-view">
+
+  <!-- 1. OFFICIAL BUYHATKE HERO POSTER (SHOP • BOOK • SAVE ALL IN ONE) -->
+  <div class="bh-hero-poster-wrapper" id="hero-poster-container">
+    <div class="hero-poster-art">
+      <img src="assets/images/poster_shop_book_save.jpg" alt="Shop Book Save All in One - Buyhatke" class="hero-poster-img">
+      <!-- Interactive Know More Overlay Pill Button -->
+      <button class="know-more-cta-overlay" id="btn-know-more-cta" onclick="window.BH_HOME.openKnowMoreModal()" title="Discover Buyhatke Superpowers">
+        <span>KNOW MORE</span>
+        <span class="play-triangle">▶</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. FLOATING SEARCH & URL BAR -->
+  <div class="home-search-bar-wrap">
+    <div class="home-search-pill" id="home-search-bar">
+      <svg class="search-glass-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="11" cy="11" r="7.5"></circle>
+        <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+      </svg>
+      <input type="text" id="global-search-input" class="home-search-input" placeholder="Search or paste a link for the best price" autocomplete="off">
+      <div class="search-divider-line"></div>
+      <button class="search-action-btn" id="camera-search-btn" title="Visual Search / Scan Lens" onclick="window.BH_HOME.triggerLensSearch()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+          <circle cx="12" cy="13" r="4"></circle>
+        </svg>
+      </button>
+      <button class="search-action-btn" id="voice-search-btn" title="Voice Search" onclick="window.BH_HOME.triggerVoiceSearch()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+          <line x1="12" y1="19" x2="12" y2="23"></line>
+          <line x1="8" y1="23" x2="16" y2="23"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- 3. COMPARISON CATEGORY GRID (3x2 CARDS) -->
+  <div class="compare-services-grid" id="compare-services-grid">
+    <!-- 1. Ride Compare -->
+    <div class="service-card-item" onclick="window.BH_APP.switchTab('cabs')" title="Compare Uber, Ola & Rapido">
+      <div class="service-card-icon-wrap">
+        <img src="assets/icons/ride_compare.svg" alt="Ride Compare" class="service-card-icon">
+      </div>
+      <span class="service-card-title">Ride<br>Compare</span>
+    </div>
+
+    <!-- 2. Flight Compare -->
+    <div class="service-card-item" onclick="window.BH_APP.switchTab('flights')" title="Compare Flights across Makemytrip, Cleartrip & EaseMyTrip">
+      <span class="service-badge-pill badge-hot">🔥 HOT</span>
+      <div class="service-card-icon-wrap">
+        <img src="assets/icons/flight_compare.svg" alt="Flight Compare" class="service-card-icon">
+      </div>
+      <span class="service-card-title">Flight<br>Compare</span>
+    </div>
+
+    <!-- 3. Hotel Compare -->
+    <div class="service-card-item" onclick="window.BH_APP.openInAppBrowser('makemytrip')" title="Compare Hotels & Stays">
+      <span class="service-badge-pill badge-new">NEW</span>
+      <div class="service-card-icon-wrap">
+        <img src="assets/icons/hotel_compare.svg" alt="Hotel Compare" class="service-card-icon">
+      </div>
+      <span class="service-card-title">Hotel<br>Compare</span>
+    </div>
+
+    <!-- 4. Grocery Compare -->
+    <div class="service-card-item" onclick="window.BH_APP.switchTab('grocery')" title="Compare Blinkit, Zepto, Instamart & Bigbasket">
+      <span class="service-badge-pill badge-beta">BETA</span>
+      <div class="service-card-icon-wrap">
+        <img src="assets/icons/grocery_compare.svg" alt="Grocery Compare" class="service-card-icon">
+      </div>
+      <span class="service-card-title">Grocery<br>Compare</span>
+    </div>
+
+    <!-- 5. Gift Card -->
+    <div class="service-card-item" onclick="window.BH_APP.switchTab('coupons')" title="Gift Cards & Deals">
+      <div class="service-card-icon-wrap">
+        <img src="assets/icons/gift_card.svg" alt="Gift Card" class="service-card-icon">
+      </div>
+      <span class="service-card-title">Gift<br>Card</span>
+    </div>
+
+    <!-- 6. Spend Lens -->
+    <div class="service-card-item" onclick="window.BH_APP.switchTab('spend-lens')" title="Spend Lens Cross-App Analytics">
+      <div class="service-card-icon-wrap">
+        <img src="assets/icons/spend_lens_icon.svg" alt="Spend Lens" class="service-card-icon">
+      </div>
+      <span class="service-card-title">Spend<br>Lens</span>
+    </div>
+  </div>
+
+  <!-- VIEW ALL SERVICES TOGGLE -->
+  <div class="view-all-row" onclick="window.BH_HOME.toggleAllServices()">
+    <button class="view-all-btn">
+      <svg class="view-all-dots-icon" viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="5" cy="5" r="2.5"></circle>
+        <circle cx="12" cy="5" r="2.5"></circle>
+        <circle cx="19" cy="5" r="2.5"></circle>
+        <circle cx="5" cy="12" r="2.5"></circle>
+        <circle cx="12" cy="12" r="2.5"></circle>
+        <circle cx="19" cy="12" r="2.5"></circle>
+        <circle cx="5" cy="19" r="2.5"></circle>
+        <circle cx="12" cy="19" r="2.5"></circle>
+        <circle cx="19" cy="19" r="2.5"></circle>
+      </svg>
+      <span>View All</span>
+    </button>
+  </div>
+
+  <!-- 4. SUPER BROWSE DARK CARD (EXACT 4x4 GRID OF 16 APPS) -->
+  <div class="super-browse-dark-section" id="super-browse-hub">
+    <div class="super-browse-header">
+      <h3 class="super-browse-title">Super Browse</h3>
+      <p class="super-browse-subtitle">
+        One place, every app, with
+        <img src="assets/icons/buyhatke_white.svg" alt="Buyhatke" class="inline-mascot-img">
+        buyhatke<span class="tm-mark">™</span> superpowers
+      </p>
+    </div>
+
+    <!-- 16 App Icons (4 Columns x 4 Rows) -->
+    <div class="super-browse-grid-16" id="super-browse-apps-grid">
+      <!-- Populated dynamically via js/home.js with all 16 apps -->
+    </div>
+
+    <!-- Powered by Smart Checkout Pill -->
+    <div class="smart-checkout-wrap">
+      <div class="smart-checkout-pill" onclick="window.BH_APP.showToast('🛡️ Buyhatke Smart Checkout active across all 16 apps!')">
+        <span class="checkout-check-circle">✓</span>
+        <span class="checkout-text">Powered by Smart Checkout</span>
+      </div>
+    </div>
+  </div>
+
+</div>

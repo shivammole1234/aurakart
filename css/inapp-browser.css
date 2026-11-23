@@ -1,0 +1,328 @@
+/* ==========================================================================
+   OFFICIAL BUYHATKE IN-APP BROWSER (SUPER BROWSE) - INAPP-BROWSER.CSS
+   ========================================================================== */
+
+.inapp-browser-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px 14px 20px;
+}
+
+/* Vault Status Hero Card */
+.vault-status-card {
+  background: linear-gradient(180deg, #EFEFFF 0%, #FFFFFF 100%);
+  border: 1.5px solid var(--bh-primary-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+}
+.vault-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.vault-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.vault-badge {
+  background: var(--bh-green-light);
+  color: var(--bh-green);
+  border: 1px solid rgba(0, 131, 87, 0.3);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+.vault-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+.vault-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background: #FFFFFF;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-card);
+}
+.vault-stat-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.vault-stat-label {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.vault-stat-num {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* Connected Platforms 2-Col Grid */
+.linked-platforms-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.platform-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  transition: all 0.15s;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+.platform-card:hover {
+  border-color: var(--bh-primary);
+  box-shadow: var(--shadow-md);
+}
+.platform-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.platform-logo-img {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+}
+.platform-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.platform-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bh-green);
+  margin-left: auto;
+}
+.platform-cart-meta {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.platform-action-btn {
+  width: 100%;
+  background: var(--bh-primary-light);
+  border: 1px solid var(--bh-primary-border);
+  border-radius: var(--radius-sm);
+  color: var(--bh-primary);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 6px 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.platform-action-btn:hover {
+  background: var(--bh-primary);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   ACTUAL IN-APP BROWSER WINDOW MODAL
+   ========================================================================== */
+.inapp-browser-modal {
+  position: absolute;
+  inset: 0;
+  background: #FFFFFF;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.inapp-browser-modal.open {
+  transform: translateY(0);
+}
+
+/* Browser Nav Header */
+.browser-top-bar {
+  background: #F8FAFC;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-bottom: 1px solid var(--border-card);
+}
+.browser-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.browser-icon-btn {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.browser-address-form {
+  flex: 1;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 0 10px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.browser-address-form:focus-within {
+  border-color: var(--bh-primary);
+}
+.lock-icon {
+  font-size: 10px;
+  color: var(--bh-green);
+}
+.browser-url-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--text-primary);
+  outline: none;
+  font-weight: 500;
+}
+.browser-go-btn {
+  background: var(--bh-primary);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.browser-close-btn {
+  background: #FEE2E2;
+  color: #DC2626;
+  border: 1px solid #FCA5A5;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+}
+
+/* Tabs Dock */
+.browser-tabs-dock {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.browser-tabs-dock::-webkit-scrollbar {
+  display: none;
+}
+.browser-tab-pill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.browser-tab-pill.active {
+  background: var(--bh-primary-light);
+  border-color: var(--bh-primary-border);
+  color: var(--bh-primary);
+}
+.browser-tab-pill img {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+/* Buyhatke Floating Smart Bar Inside Browser */
+.browser-smart-assistant-bar {
+  background: #FFFFFF;
+  border-top: 1px solid var(--border-card);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+.smart-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.smart-bar-savings-chip {
+  background: var(--bh-green-light);
+  color: var(--bh-green);
+  border: 1px solid rgba(0, 131, 87, 0.3);
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+}
+.smart-bar-action-btn {
+  background: var(--bh-primary);
+  color: #FFFFFF;
+  border: none;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+}
+
+/* Live Iframe Viewport */
+.browser-frame-container {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  background: #FFFFFF;
+}
+.browser-live-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #FFFFFF;
+}

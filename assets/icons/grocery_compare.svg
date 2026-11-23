@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g transform="translate(18, 14)">
+    <!-- Vegetables popping out -->
+    <!-- Broccoli / Lettuce Greens -->
+    <circle cx="24" cy="22" r="12" fill="#22C55E"/>
+    <circle cx="16" cy="18" r="8" fill="#16A34A"/>
+    <circle cx="34" cy="18" r="9" fill="#4ADE80"/>
+    <!-- Carrot -->
+    <path d="M46 12L38 32H48L52 14C52 12 48 10 46 12Z" fill="#F97316"/>
+    <path d="M48 6C46 8 48 12 48 12" stroke="#15803D" stroke-width="2"/>
+    <path d="M51 6C50 8 49 12 49 12" stroke="#15803D" stroke-width="2"/>
+    <!-- Tomato in front -->
+    <circle cx="48" cy="52" r="8" fill="#EF4444"/>
+    <path d="M48 44L46 42M48 44L50 42" stroke="#15803D" stroke-width="2"/>
+
+    <!-- Kraft Paper Grocery Bag -->
+    <path d="M12 28L18 68H46L52 28H12Z" fill="#D97706"/>
+    <path d="M14 30L20 66H44L48 30H14Z" fill="#F59E0B"/>
+    <path d="M12 28L16 34L20 28L24 34L28 28L32 34L36 28L40 34L44 28L48 34L52 28" fill="#B45309"/>
+    <!-- Bag handles -->
+    <rect x="25" y="40" width="14" height="6" rx="3" fill="#B45309"/>
+  </g>
+</svg>

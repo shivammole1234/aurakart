@@ -1,0 +1,2476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>Buyhatke: AI Shopping Assistant - Cab Wars, Price History & Groceries</title>
+  <meta name="description" content="Buyhatke AI Shopping Assistant: Compare Blinkit, Zepto, Uber, Ola, Amazon & Flipkart. Super Browse with In-App Browser, Cab Wars, Price History Graph and real OTP login.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/buyhatke.svg">
+
+  <!-- Modular Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/grocery.css">
+  <link rel="stylesheet" href="css/cabs.css">
+  <link rel="stylesheet" href="css/flights.css">
+  <link rel="stylesheet" href="css/shopping.css">
+  <link rel="stylesheet" href="css/inapp-browser.css">
+  <link rel="stylesheet" href="css/coupons.css">
+  <link rel="stylesheet" href="css/spend-lens.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/flipkart.css">
+
+  <!-- Performance Preload for Critical Above-The-Fold Hero Banner -->
+  <link rel="preload" as="image" href="assets/images/poster_shop_book_save.jpg">
+</head>
+<body>
+  <div class="app-viewport-wrapper">
+    <!-- Mobile Status Bar -->
+    <div class="mobile-status-bar">
+      <span id="status-bar-time">1:15</span>
+      <div class="status-bar-icons">
+        <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19H19.65l-.62-1.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9zm0 2c3.87 0 7 3.13 7 7 0 1.5-.47 2.89-1.28 4.03L12 7.85l-5.72 8.18C5.47 14.89 5 13.5 5 12c0-3.87 3.13-7 7-7z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/></svg>
+        <span class="status-battery-pill">
+          <span class="battery-leaf">🍃</span>
+          <span id="status-battery-num">25</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Official Buyhatke Top Announcement Strip -->
+    <div class="bh-announcement-strip">
+      <span>💡</span>
+      <span>Find best price by adding <strong>“buyhatke.com/”</strong> before any link</span>
+    </div>
+
+    <!-- Official Buyhatke App Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand-logo-wrap" onclick="window.BH_APP.switchTab('home')">
+          <img src="assets/icons/buyhatke.svg" alt="Buyhatke" class="brand-logo-img">
+          <span class="brand-title">Buy<span>hatke</span></span>
+        </div>
+        <div class="location-pill" id="header-location-pill" title="Tap to change city">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span id="location-display-text">Koramangala, BLR</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="coin-badge" id="header-coins-badge" title="Buyhatke Super Coins">
+          <span>🪙</span>
+          <span id="header-coins-val">350</span>
+        </div>
+        <button class="sms-config-btn" id="btn-open-sms-config" title="SMS Gateway Config" onclick="window.BH_AUTH.openAuthModal('phone')">
+          ⚙️
+        </button>
+        <button class="user-avatar-btn" id="header-user-avatar" title="Login / Profile" onclick="window.BH_AUTH.openAuthModal('phone')">
+          👤
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Viewport Scroll Container -->
+    <main class="app-content-container" id="app-scroll-container">
+      
+      <!-- 1. SUPER BROWSE (HOME) - EXACT 1:1 REPLICA -->
+      <section class="app-view-tab" id="view-home">
+        <div class="home-container" id="home-view">
+
+          <!-- 1. OFFICIAL BUYHATKE HERO POSTER (SHOP • BOOK • SAVE ALL IN ONE) -->
+          <div class="bh-hero-poster-wrapper" id="hero-poster-container">
+            <div class="hero-poster-art">
+              <img src="assets/images/poster_shop_book_save.jpg" alt="Shop Book Save All in One - Buyhatke" class="hero-poster-img">
+              <!-- Interactive Know More Overlay Pill Button -->
+              <button class="know-more-cta-overlay" id="btn-know-more-cta" onclick="window.BH_HOME.openKnowMoreModal()" title="Discover Buyhatke Superpowers">
+                <span>KNOW MORE</span>
+                <span class="play-triangle">▶</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. FLOATING SEARCH & URL BAR -->
+          <div class="home-search-bar-wrap">
+            <div class="home-search-pill" id="home-search-bar">
+              <svg class="search-glass-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="7.5"></circle>
+                <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+              </svg>
+              <input type="text" id="global-search-input" class="home-search-input" placeholder="Search or paste a link for the best price" autocomplete="off">
+              <div class="search-divider-line"></div>
+              <button class="search-action-btn" id="camera-search-btn" title="Visual Search / Scan Lens" onclick="window.BH_HOME.triggerLensSearch()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                  <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+              </button>
+              <button class="search-action-btn" id="voice-search-btn" title="Voice Search" onclick="window.BH_HOME.triggerVoiceSearch()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                  <line x1="12" y1="19" x2="12" y2="23"></line>
+                  <line x1="8" y1="23" x2="16" y2="23"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. COMPARISON CATEGORY GRID (3x2 CARDS) -->
+          <div class="compare-services-grid" id="compare-services-grid">
+            <!-- 1. Ride Compare -->
+            <div class="service-card-item" onclick="window.BH_APP.switchTab('cabs')" title="Compare Uber, Ola & Rapido">
+              <div class="service-card-icon-wrap">
+                <img src="assets/icons/ride_compare.svg" alt="Ride Compare" class="service-card-icon">
+              </div>
+              <span class="service-card-title">Ride<br>Compare</span>
+            </div>
+
+            <!-- 2. Flight Compare -->
+            <div class="service-card-item" onclick="window.BH_APP.switchTab('flights')" title="Compare Flights across Makemytrip, Cleartrip & EaseMyTrip">
+              <span class="service-badge-pill badge-hot">🔥 HOT</span>
+              <div class="service-card-icon-wrap">
+                <img src="assets/icons/flight_compare.svg" alt="Flight Compare" class="service-card-icon">
+              </div>
+              <span class="service-card-title">Flight<br>Compare</span>
+            </div>
+
+            <!-- 3. Hotel Compare -->
+            <div class="service-card-item" onclick="window.BH_APP.openInAppBrowser('makemytrip')" title="Compare Hotels & Stays">
+              <span class="service-badge-pill badge-new">NEW</span>
+              <div class="service-card-icon-wrap">
+                <img src="assets/icons/hotel_compare.svg" alt="Hotel Compare" class="service-card-icon">
+              </div>
+              <span class="service-card-title">Hotel<br>Compare</span>
+            </div>
+
+            <!-- 4. Grocery Compare -->
+            <div class="service-card-item" onclick="window.BH_APP.switchTab('grocery')" title="Compare Blinkit, Zepto, Instamart & Bigbasket">
+              <span class="service-badge-pill badge-beta">BETA</span>
+              <div class="service-card-icon-wrap">
+                <img src="assets/icons/grocery_compare.svg" alt="Grocery Compare" class="service-card-icon">
+              </div>
+              <span class="service-card-title">Grocery<br>Compare</span>
+            </div>
+
+            <!-- 5. Gift Card -->
+            <div class="service-card-item" onclick="window.BH_APP.switchTab('coupons')" title="Gift Cards & Deals">
+              <div class="service-card-icon-wrap">
+                <img src="assets/icons/gift_card.svg" alt="Gift Card" class="service-card-icon">
+              </div>
+              <span class="service-card-title">Gift<br>Card</span>
+            </div>
+
+            <!-- 6. Spend Lens -->
+            <div class="service-card-item" onclick="window.BH_APP.switchTab('spend-lens')" title="Spend Lens Cross-App Analytics">
+              <div class="service-card-icon-wrap">
+                <img src="assets/icons/spend_lens_icon.svg" alt="Spend Lens" class="service-card-icon">
+              </div>
+              <span class="service-card-title">Spend<br>Lens</span>
+            </div>
+          </div>
+
+          <!-- VIEW ALL SERVICES TOGGLE -->
+          <div class="view-all-row" onclick="window.BH_HOME.toggleAllServices()">
+            <button class="view-all-btn">
+              <svg class="view-all-dots-icon" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="5" cy="5" r="2.5"></circle>
+                <circle cx="12" cy="5" r="2.5"></circle>
+                <circle cx="19" cy="5" r="2.5"></circle>
+                <circle cx="5" cy="12" r="2.5"></circle>
+                <circle cx="12" cy="12" r="2.5"></circle>
+                <circle cx="19" cy="12" r="2.5"></circle>
+                <circle cx="5" cy="19" r="2.5"></circle>
+                <circle cx="12" cy="19" r="2.5"></circle>
+                <circle cx="19" cy="19" r="2.5"></circle>
+              </svg>
+              <span>View All</span>
+            </button>
+          </div>
+
+          <!-- 4. SUPER BROWSE DARK CARD (EXACT 4x4 GRID OF 16 APPS) -->
+          <div class="super-browse-dark-section" id="super-browse-hub">
+            <div class="super-browse-header">
+              <h3 class="super-browse-title">Super Browse</h3>
+              <p class="super-browse-subtitle">
+                One place, every app, with
+                <img src="assets/icons/buyhatke_white.svg" alt="Buyhatke" class="inline-mascot-img">
+                buyhatke<span class="tm-mark">™</span> superpowers
+              </p>
+            </div>
+
+            <!-- 16 App Icons (4 Columns x 4 Rows) -->
+            <div class="super-browse-grid-16" id="super-browse-apps-grid">
+              <!-- Populated dynamically via js/home.js with all 16 apps -->
+            </div>
+
+            <!-- Powered by Smart Checkout Pill -->
+            <div class="smart-checkout-wrap">
+              <div class="smart-checkout-pill" onclick="window.BH_APP.showToast('🛡️ Buyhatke Smart Checkout active across all 16 apps!')">
+                <span class="checkout-check-circle">✓</span>
+                <span class="checkout-text">Powered by Smart Checkout</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 2. CAB WARS -->
+      <section class="app-view-tab" id="view-cabs" style="display: none;">
+        <div class="cabs-container" id="cabs-view">
+          <div class="cab-wars-badge-row">
+            <h3 class="cab-wars-title">🚖 Cab Wars Live</h3>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="badge-cheapest">BEST FARE GUARANTEED</span>
+              <button class="cab-rides-btn" id="btn-open-cab-rides" onclick="window.BH_CABS.openRidesHistory()">
+                <span>🚕 My Rides</span>
+                <span id="cab-rides-nav-count" style="background: var(--bh-primary); color: #fff; padding: 1px 6px; border-radius: 10px; font-size: 10px;">0</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="smart-pickup-banner">
+            <span>💡</span>
+            <span><strong>Smart Pickup Tip:</strong> Pickup at Gate 2 saves ₹45 on Uber & Ola!</span>
+          </div>
+
+          <div class="cab-route-card">
+            <div class="route-inputs-wrapper">
+              <div class="route-dots-line">
+                <div class="dot-pickup"></div>
+                <div class="line-dashed"></div>
+                <div class="dot-drop"></div>
+              </div>
+              <div class="route-fields">
+                <input type="text" id="cab-pickup-input" class="route-input-field" value="Koramangala 4th Block, Bengaluru" placeholder="Enter pickup location">
+                <input type="text" id="cab-drop-input" class="route-input-field" value="Kempegowda International Airport (BLR)" placeholder="Enter drop location">
+              </div>
+              <button class="swap-route-btn" id="swap-cab-route-btn" title="Swap pickup and drop">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="route-presets-row" id="route-presets-container">
+              <div class="route-preset-chip active" data-route="route_blr_airport">BLR Airport (38.5 km)</div>
+              <div class="route-preset-chip" data-route="route_blr_indiranagar">Indiranagar (10.4 km)</div>
+              <div class="route-preset-chip" data-route="route_blr_mgroad">MG Road (17.2 km)</div>
+              <div class="route-preset-chip" data-route="route_del_cybercity">Cyber City (27.8 km)</div>
+              <div class="route-preset-chip" data-route="route_bom_bkc">Mumbai BKC (14.6 km)</div>
+            </div>
+
+            <div class="route-meta-stats">
+              <div class="route-meta-stat-item">
+                <span>📍 Distance:</span>
+                <strong id="cab-distance-val">38.5 km</strong>
+              </div>
+              <div class="route-meta-stat-item">
+                <span>⏱️ Travel Time:</span>
+                <strong id="cab-time-val">62 mins</strong>
+              </div>
+              <div class="route-meta-stat-item">
+                <span>🚦 Traffic:</span>
+                <strong style="color: var(--bh-green);">Normal</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="cab-vehicle-filters" id="cab-vehicle-filters">
+            <div class="vehicle-filter-btn active" data-vehicle="all">⚡ All Options</div>
+            <div class="vehicle-filter-btn" data-vehicle="auto">🛺 Auto</div>
+            <div class="vehicle-filter-btn" data-vehicle="mini">🚗 Mini / Go</div>
+            <div class="vehicle-filter-btn" data-vehicle="moto">🏍️ Bike Moto</div>
+            <div class="vehicle-filter-btn" data-vehicle="sedan">🚘 Prime Sedan</div>
+            <div class="vehicle-filter-btn" data-vehicle="suv">🚐 SUV XL</div>
+          </div>
+
+          <div class="cabs-list" id="cabs-list-container"></div>
+        </div>
+
+        <!-- ====================================================================
+             MODAL 1: IN-APP RIDE BOOKING CONFIRMATION
+             ==================================================================== -->
+        <div class="cab-modal-overlay" id="cab-ride-booking-modal" style="display: none;" onclick="if(event.target === this) window.BH_CABS.closeBookingModal()">
+          <div class="cab-modal-sheet" onclick="event.stopPropagation()">
+            <div class="cab-modal-header">
+              <div class="cab-modal-title">
+                <span id="cab-booking-provider-logo">🚖</span>
+                <span id="cab-booking-modal-title">Confirm Ride Booking</span>
+              </div>
+              <button class="cab-modal-close" onclick="window.BH_CABS.closeBookingModal()">✕</button>
+            </div>
+
+            <!-- Route Strip -->
+            <div class="cab-route-strip">
+              <div class="cab-strip-item">
+                <div class="cab-strip-dot green"></div>
+                <div>Pickup: <strong id="cab-booking-pickup-text">Koramangala 4th Block</strong></div>
+              </div>
+              <div class="cab-strip-item">
+                <div class="cab-strip-dot red"></div>
+                <div>Drop: <strong id="cab-booking-drop-text">Kempegowda International Airport</strong></div>
+              </div>
+              <div style="font-size: 11px; color: #64748B; display: flex; gap: 12px; margin-top: 2px;">
+                <span>📍 <strong id="cab-booking-dist-text">38.5 km</strong></span>
+                <span>⏱️ <strong id="cab-booking-time-text">62 mins</strong></span>
+                <span>⚡ <strong id="cab-booking-eta-text">3 mins away</strong></span>
+              </div>
+            </div>
+
+            <!-- Fare Breakdown -->
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569;">
+                <span>Ride Fare (<span id="cab-booking-vehicle-type">Uber Go</span>)</span>
+                <span id="cab-booking-base-fare">₹749</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 12px; color: #16A34A; font-weight: 700;">
+                <span>Smart Pickup Discount</span>
+                <span>-₹45</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569;">
+                <span>Taxes & GST (5%)</span>
+                <span>Included</span>
+              </div>
+              <div style="margin-top: 4px; padding-top: 6px; border-top: 1px dashed #CBD5E1; display: flex; justify-content: space-between; font-size: 14px; font-weight: 800; color: #0F172A;">
+                <span>Total Fare to Pay</span>
+                <span id="cab-booking-total-fare" style="color: #5855E5;">₹704</span>
+              </div>
+            </div>
+
+            <!-- Payment Mode Selector -->
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase;">Payment Method</div>
+              <label style="display: flex; align-items: center; gap: 10px; background: #F8FAFC; border: 1.5px solid #CBD5E1; padding: 10px 12px; border-radius: 12px; cursor: pointer;">
+                <input type="radio" name="cab-payment-mode" value="UPI" checked>
+                <div style="display: flex; flex-direction: column;">
+                  <span style="font-size: 12.5px; font-weight: 700; color: #0F172A;">Instant UPI (GPay / PhonePe / Paytm / CRED)</span>
+                  <span style="font-size: 10.5px; color: #16A34A; font-weight: 600;">⚡ Instant automated ride release</span>
+                </div>
+              </label>
+              <label style="display: flex; align-items: center; gap: 10px; background: #F8FAFC; border: 1.5px solid #CBD5E1; padding: 10px 12px; border-radius: 12px; cursor: pointer;">
+                <input type="radio" name="cab-payment-mode" value="CASH">
+                <div style="display: flex; flex-direction: column;">
+                  <span style="font-size: 12.5px; font-weight: 700; color: #0F172A;">Cash to Driver</span>
+                  <span style="font-size: 10.5px; color: #64748B;">Pay directly upon trip completion</span>
+                </div>
+              </label>
+            </div>
+
+            <button type="button" class="cab-advance-btn" id="btn-submit-cab-booking" onclick="window.BH_CABS.submitCabBooking()">
+              <span>🚖 Confirm & Book Ride Now ➔</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             MODAL 2: LIVE DRIVER TRACKING & START RIDE OTP
+             ==================================================================== -->
+        <div class="cab-modal-overlay" id="cab-live-ride-modal" style="display: none;" onclick="if(event.target === this) window.BH_CABS.closeLiveRideModal()">
+          <div class="cab-modal-sheet" onclick="event.stopPropagation()">
+            <div class="cab-modal-header">
+              <div class="cab-modal-title">
+                <span>🚖</span>
+                <span id="cab-live-title">Live Ride Tracker</span>
+              </div>
+              <button class="cab-modal-close" onclick="window.BH_CABS.closeLiveRideModal()">✕</button>
+            </div>
+
+            <!-- Prominent Start Ride OTP -->
+            <div class="cab-otp-box">
+              <span class="cab-otp-label">🔑 START RIDE OTP</span>
+              <span class="cab-otp-digits" id="cab-live-otp-display">8728</span>
+              <span class="cab-otp-hint">Share this OTP with driver once you board the vehicle</span>
+            </div>
+
+            <!-- Driver Card -->
+            <div class="driver-info-card">
+              <div class="driver-meta-left">
+                <div class="driver-avatar-circle" id="cab-driver-avatar">👨‍✈️</div>
+                <div style="display: flex; flex-direction: column;">
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span class="driver-name-text" id="cab-driver-name">Rajesh Murthy</span>
+                    <span class="driver-rating-badge" id="cab-driver-rating">4.9 ★</span>
+                  </div>
+                  <span class="driver-vehicle-text" id="cab-driver-vehicle">Maruti Dzire White</span>
+                  <span class="driver-plate-pill" id="cab-driver-plate">KA-01-MJ-2918</span>
+                </div>
+              </div>
+              <button class="driver-call-btn" onclick="window.BH_CABS.callDriver()">
+                <span>📞 Call</span>
+              </button>
+            </div>
+
+            <!-- Route Strip -->
+            <div class="cab-route-strip">
+              <div class="cab-strip-item">
+                <div class="cab-strip-dot green"></div>
+                <span id="cab-live-pickup-text">Koramangala 4th Block</span>
+              </div>
+              <div class="cab-strip-item">
+                <div class="cab-strip-dot red"></div>
+                <span id="cab-live-drop-text">Kempegowda International Airport</span>
+              </div>
+            </div>
+
+            <!-- 4-Stage Live Timeline -->
+            <div class="cab-timeline" id="cab-stages-timeline">
+              <!-- Rendered dynamically -->
+            </div>
+
+            <!-- Fast-Forward Test Button -->
+            <button type="button" class="cab-advance-btn" id="btn-advance-cab-stage" onclick="window.BH_CABS.advanceRideStage()">
+              <span>⚡ Test Demo: Advance Ride Stage ➔</span>
+            </button>
+
+            <!-- Rating & Tip Section (Shown when trip completes) -->
+            <div class="cab-rating-box" id="cab-rating-container" style="display: none;">
+              <span style="font-size: 13px; font-weight: 800; color: #0F172A;">Trip Completed! How was your ride?</span>
+              <div class="cab-stars-row" id="cab-stars-selector">
+                <span class="cab-star-icon active" data-star="1" onclick="window.BH_CABS.selectStar(1)">★</span>
+                <span class="cab-star-icon active" data-star="2" onclick="window.BH_CABS.selectStar(2)">★</span>
+                <span class="cab-star-icon active" data-star="3" onclick="window.BH_CABS.selectStar(3)">★</span>
+                <span class="cab-star-icon active" data-star="4" onclick="window.BH_CABS.selectStar(4)">★</span>
+                <span class="cab-star-icon active" data-star="5" onclick="window.BH_CABS.selectStar(5)">★</span>
+              </div>
+              <div style="font-size: 11px; color: #64748B;">Add a tip for driver:</div>
+              <div class="cab-tip-chips">
+                <div class="cab-tip-chip" onclick="window.BH_CABS.selectTip(0, this)">No Tip</div>
+                <div class="cab-tip-chip active" onclick="window.BH_CABS.selectTip(20, this)">₹20</div>
+                <div class="cab-tip-chip" onclick="window.BH_CABS.selectTip(50, this)">₹50</div>
+                <div class="cab-tip-chip" onclick="window.BH_CABS.selectTip(100, this)">₹100</div>
+              </div>
+              <button class="cab-advance-btn" style="width: 100%; margin-top: 6px;" onclick="window.BH_CABS.submitRating()">
+                <span>Submit Rating & Done</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             MODAL 3: MY RIDES HISTORY DRAWER
+             ==================================================================== -->
+        <div class="cab-modal-overlay" id="cab-rides-history-modal" style="display: none;" onclick="if(event.target === this) window.BH_CABS.closeRidesHistory()">
+          <div class="cab-modal-sheet" onclick="event.stopPropagation()">
+            <div class="cab-modal-header">
+              <div class="cab-modal-title">
+                <span>🚕</span>
+                <span>My Cab Rides History</span>
+              </div>
+              <button class="cab-modal-close" onclick="window.BH_CABS.closeRidesHistory()">✕</button>
+            </div>
+
+            <div id="cab-rides-history-list" style="display: flex; flex-direction: column; gap: 10px; max-height: 400px; overflow-y: auto;">
+              <!-- Populated via API -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. GROCERY STORE CONNECTOR & CART OPTIMIZER (EXACT BUYHATKE FLOW) -->
+      <section class="app-view-tab" id="view-grocery" style="display: none;">
+        
+        <!-- ====================================================================
+             SCREEN 1: STORE CONNECTION HUB ("Smart cart check prices for you")
+             ==================================================================== -->
+        <div class="grocery-hub-view" id="grocery-hub-screen">
+          <!-- 1. Top Bar: Back arrow < | "Grocery compare" | Buyhatke brand badge -->
+          <div class="hub-top-bar">
+            <button class="hub-back-btn" onclick="window.BH_APP.switchTab('home')" title="Back to Home" aria-label="Back">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+            <span class="hub-bar-title">Grocery compare</span>
+            <div class="hub-brand-badge">
+              <img src="assets/icons/buyhatke.svg" alt="Buyhatke" class="hub-brand-logo">
+              <span class="hub-brand-text">Buy<span>hatke</span></span>
+            </div>
+          </div>
+
+          <!-- Hero Header Section -->
+          <div class="hub-header-section">
+            <h1 class="hub-title">Smart cart check prices for you</h1>
+            <p class="hub-subtitle">We compare prices across grocery stores to find the best deal</p>
+
+            <!-- Micro Status: Small badge showing connected store logos -->
+            <div class="hub-micro-status" id="hub-micro-status">
+              <div class="hub-micro-logos" id="hub-micro-logos">
+                <!-- Dynamically populated by js/grocery.js -->
+              </div>
+              <span class="hub-micro-status-text" id="hub-micro-status-text">1 store connected</span>
+            </div>
+          </div>
+
+          <!-- 2. 6-Store Grid (2 columns x 3 rows) -->
+          <div class="hub-stores-grid" id="hub-stores-grid">
+            <!-- Dynamically populated by js/grocery.js -->
+          </div>
+
+          <!-- 3. Bottom Sticky Actions -->
+          <div class="hub-bottom-sticky-bar">
+            <button class="hub-primary-saving-btn" id="hub-start-saving-btn" onclick="window.BH_GROCERY.showCatalogView()">
+              <span>Start saving</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <button class="hub-refresh-btn" id="hub-refresh-btn" onclick="window.BH_GROCERY.refreshStoreConnections()">
+              🔄 Refresh
+            </button>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             ACTIVE MULTI-STORE COMPARISON CATALOG
+             ==================================================================== -->
+        <div class="grocery-container" id="grocery-catalog-screen" style="display: none;">
+          <!-- Top Return to Store Connector Strip -->
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 2px 8px;">
+            <button onclick="window.BH_GROCERY.showHubView()" style="background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 20px; padding: 6px 14px; font-size: 12px; font-weight: 700; color: #1E293B; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+              <span>‹ Manage Stores</span>
+              <span id="catalog-linked-pill" style="background: #16A34A; color: #fff; font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 10px;">1 Linked</span>
+            </button>
+            <button class="grocery-orders-nav-btn" onclick="window.BH_GROCERY.openOrdersHistory()" title="View your order history & active deliveries">
+              <span>🛍️ My Orders</span>
+              <span class="orders-count-badge" id="orders-nav-count">0</span>
+            </button>
+          </div>
+
+          <!-- Hyper-local Delivery Location Selector (Dark store geohash 2km routing) -->
+          <div class="grocery-location-bar" id="grocery-location-bar" onclick="window.BH_GROCERY.openLocationModal()">
+            <div class="grocery-location-left">
+              <span class="location-pin-icon">📍</span>
+              <div class="location-text-group">
+                <div class="location-deliver-label">Deliver in 10 mins to:</div>
+                <div class="location-current-name" id="grocery-current-location-text">Koramangala 4th Block, Bengaluru (560034)</div>
+              </div>
+            </div>
+            <button class="location-change-pill" type="button">Change ▾</button>
+          </div>
+
+          <!-- Dark Store Proximity Radar Strip -->
+          <div class="grocery-darkstores-radar" id="grocery-darkstores-radar">
+            <span class="radar-chip" id="radar-zepto"><img src="assets/icons/zepto.svg" alt="Zepto"> Zepto <strong>0.8 km (7m)</strong></span>
+            <span class="radar-chip" id="radar-blinkit"><img src="assets/icons/blinkit.svg" alt="Blinkit"> Blinkit <strong>1.2 km (10m)</strong></span>
+            <span class="radar-chip" id="radar-instamart"><img src="assets/icons/instamart.svg" alt="Instamart"> Instamart <strong>1.6 km (12m)</strong></span>
+            <span class="radar-chip ondc-pill" id="radar-bigbasket"><img src="assets/icons/bigbasket.svg" alt="BigBasket"> BigBasket ONDC <strong>2.2 km (18m)</strong></span>
+          </div>
+
+          <!-- GROCERY & ONDC LIVE SEARCH BAR -->
+          <div class="grocery-search-wrapper">
+            <span class="grocery-search-icon">🔍</span>
+            <input type="text" id="grocery-search-input" class="grocery-search-input" placeholder="Search 26+ items: milk, atta, oil, maggi, veggies, paneer..." autocomplete="off">
+            <button type="button" class="grocery-search-clear-btn" id="grocery-search-clear-btn" style="display: none;" onclick="window.BH_GROCERY.clearSearch()" title="Clear search">✕</button>
+          </div>
+
+          <div class="grocery-search-meta-row" id="grocery-search-meta" style="display: none;">
+            <span>Found <strong id="grocery-search-count">0</strong> items for "<span id="grocery-search-term"></span>"</span>
+            <button class="grocery-search-clear-pill" onclick="window.BH_GROCERY.clearSearch()">Clear Filter ✕</button>
+          </div>
+
+          <!-- Store Switcher Bar -->
+          <div class="grocery-stores-bar">
+            <div class="store-filter-badge active" data-store="all">
+              <span>⚡ All Quick Commerce</span>
+            </div>
+            <div class="store-filter-badge" data-store="zepto">
+              <img src="assets/icons/zepto.svg" alt="Zepto">
+              <span>Zepto (8 mins)</span>
+            </div>
+            <div class="store-filter-badge" data-store="blinkit">
+              <img src="assets/icons/blinkit.svg" alt="Blinkit">
+              <span>Blinkit (11 mins)</span>
+            </div>
+            <div class="store-filter-badge" data-store="instamart">
+              <img src="assets/icons/instamart.svg" alt="Instamart">
+              <span>Instamart (14 mins)</span>
+            </div>
+            <div class="store-filter-badge" data-store="bigbasket">
+              <img src="assets/icons/bigbasket.svg" alt="BigBasket">
+              <span>BigBasket ONDC (25 mins)</span>
+            </div>
+          </div>
+
+          <!-- Unified Basket Live Comparison Card -->
+          <div class="unified-basket-summary-card" id="unified-basket-card">
+            <div class="basket-card-header">
+              <div class="basket-title">
+                <span>🛒 Unified Smart Basket</span>
+                <span class="basket-count-badge" id="basket-item-count">3 items</span>
+              </div>
+              <span class="basket-savings-highlight" id="basket-savings-text">🎉 Save ₹41 on Zepto</span>
+            </div>
+
+            <!-- Side-by-Side Basket Total Matrix -->
+            <div class="basket-store-comparison-row" id="basket-store-comparison-row">
+              <div class="basket-store-col best-overall" id="col-zepto">
+                <img src="assets/icons/zepto.svg" alt="Zepto" class="basket-store-logo">
+                <span class="basket-store-total" id="total-zepto">₹384</span>
+                <span class="basket-store-eta">⚡ 8 mins</span>
+                <span class="basket-store-del">Free Del</span>
+              </div>
+              <div class="basket-store-col" id="col-blinkit">
+                <img src="assets/icons/blinkit.svg" alt="Blinkit" class="basket-store-logo">
+                <span class="basket-store-total" id="total-blinkit">₹398</span>
+                <span class="basket-store-eta">⚡ 11 mins</span>
+                <span class="basket-store-del">+₹15 fee</span>
+              </div>
+              <div class="basket-store-col" id="col-instamart">
+                <img src="assets/icons/instamart.svg" alt="Instamart" class="basket-store-logo">
+                <span class="basket-store-total" id="total-instamart">₹412</span>
+                <span class="basket-store-eta">⚡ 14 mins</span>
+                <span class="basket-store-del">+₹19 fee</span>
+              </div>
+              <div class="basket-store-col" id="col-bigbasket">
+                <img src="assets/icons/bigbasket.svg" alt="BigBasket" class="basket-store-logo">
+                <span class="basket-store-total" id="total-bigbasket">₹425</span>
+                <span class="basket-store-eta">⚡ 25 mins</span>
+                <span class="basket-store-del">+₹30 fee</span>
+              </div>
+            </div>
+
+            <!-- Dual Order Action Bar -->
+            <div class="basket-action-row">
+              <button class="basket-ondc-btn" id="basket-ondc-checkout-btn" onclick="window.BH_GROCERY.openOndcCheckout()">
+                <span class="ondc-tag">🇮🇳 ONDC</span>
+                <span>1-Tap Order Inside App</span>
+              </button>
+              <button class="basket-checkout-btn" id="basket-order-direct-btn">
+                <span>Order on Zepto ↗</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+              <button class="basket-clear-btn" id="basket-clear-btn" title="Reset basket">Reset</button>
+            </div>
+          </div>
+
+          <!-- Category Pills -->
+          <div class="grocery-category-scroll" id="grocery-cat-scroll">
+            <div class="grocery-cat-pill active" data-cat="all">All Items</div>
+            <div class="grocery-cat-pill" data-cat="Dairy & Milk">Dairy & Milk</div>
+            <div class="grocery-cat-pill" data-cat="Fresh Vegetables">Vegetables</div>
+            <div class="grocery-cat-pill" data-cat="Fresh Fruits">Fruits</div>
+            <div class="grocery-cat-pill" data-cat="Cooking Essentials">Oil & Ghee</div>
+            <div class="grocery-cat-pill" data-cat="Flours & Grains">Atta, Rice & Dal</div>
+            <div class="grocery-cat-pill" data-cat="Beverages">Drinks & Tea</div>
+            <div class="grocery-cat-pill" data-cat="Snacks & Instant Food">Snacks & Maggi</div>
+            <div class="grocery-cat-pill" data-cat="Chocolates & Sweets">Chocolates</div>
+            <div class="grocery-cat-pill" data-cat="Cleaning & Household">Cleaning</div>
+          </div>
+
+          <!-- Items Grid -->
+          <div class="grocery-items-grid" id="grocery-items-container"></div>
+        </div>
+
+        <!-- ====================================================================
+             SCREEN 2: REAL MERCHANT AUTHENTICATION BRIDGE (OFFICIAL CARRIER SMS)
+             ==================================================================== -->
+        <div class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 inapp-store-container-overlay" id="inapp-store-container-modal" style="display: none;" onclick="if(event.target === this) window.BH_GROCERY.closeInAppStore()">
+          <div class="w-full max-w-xl bg-[#121418] border border-[#2A2F3A] rounded-2xl shadow-2xl overflow-hidden modal-window-dark" onclick="event.stopPropagation()">
+            <!-- Top Header Bar -->
+            <div class="modal-header-bar">
+              <div class="modal-brand-left">
+                <div class="modal-icon-circle">
+                  <img id="inapp-store-logo" src="assets/icons/zepto.svg" alt="Store" class="modal-store-logo">
+                </div>
+                <div>
+                  <h3 id="inapp-store-name" class="modal-store-title">Zepto</h3>
+                  <span class="modal-rail-tag">🔒 Official Merchant SSO Rail</span>
+                </div>
+              </div>
+              <button class="modal-close-btn" onclick="window.BH_GROCERY.closeInAppStore()" title="Close modal" aria-label="Close">
+                ✕
+              </button>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="modal-body-content">
+              <!-- STATE 1: INITIAL MERCHANT BRIDGE PROMPT -->
+              <div id="merchant-bridge-prompt" class="modal-state-wrapper">
+                <div class="modal-status-pill">
+                  <span class="modal-pulse-dot"></span>
+                  <span class="modal-status-text">Connecting to Official Merchant Rail</span>
+                </div>
+
+                <p class="modal-subtext">
+                  We will launch a secure authentication window to link your account. Enter your registered mobile number on the merchant page to receive your official verification OTP.
+                </p>
+
+                <div class="modal-security-box">
+                  <div class="modal-security-icon">🛡️</div>
+                  <div class="modal-security-text">
+                    <div class="modal-security-title">Carrier SMS & Direct Session Sync</div>
+                    <div class="modal-security-desc">Buyhatke never intercepts your passwords or payment details. Your authentic account token is synced directly via official merchant cookies.</div>
+                  </div>
+                </div>
+
+                <div class="modal-action-column">
+                  <button type="button" class="bg-[#2563EB] text-white py-3 rounded-xl font-semibold w-full hover:bg-blue-600 btn-merchant-login" onclick="window.BH_GROCERY.openSecureMerchantLogin()">
+                    Open Secure Merchant Login ↗
+                  </button>
+                  <button type="button" class="modal-cancel-btn" onclick="window.BH_GROCERY.closeInAppStore()">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+
+              <!-- STATE 2: AWAITING VERIFICATION -->
+              <div id="merchant-awaiting-state" class="modal-state-wrapper" style="display: none;">
+                <div class="modal-spinner-container">
+                  <div class="modal-spinner-ring"></div>
+                  <div class="modal-awaiting-title">Authenticating on merchant rails...</div>
+                  <div class="modal-awaiting-sub">Complete login in the opened window.</div>
+                </div>
+
+                <div class="modal-awaiting-details">
+                  <div class="modal-step-item">
+                    <span class="modal-step-num">1</span>
+                    <span id="modal-step-text-1">Enter your mobile number in the opened window.</span>
+                  </div>
+                  <div class="modal-step-item">
+                    <span class="modal-step-num">2</span>
+                    <span>Verify using the official carrier SMS code sent to your phone.</span>
+                  </div>
+                  <div class="modal-step-item">
+                    <span class="modal-step-num">3</span>
+                    <span>Once logged in, click the confirmation button below.</span>
+                  </div>
+                </div>
+
+                <div class="modal-action-column">
+                  <button type="button" class="modal-complete-btn" onclick="window.BH_GROCERY.completeMerchantLogin()">
+                    I have completed login ➔
+                  </button>
+                  <button type="button" class="modal-reopen-btn" onclick="window.BH_GROCERY.openSecureMerchantLogin()">
+                    🔄 Re-open Login Window ↗
+                  </button>
+                  <button type="button" class="modal-cancel-btn" onclick="window.BH_GROCERY.closeInAppStore()">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             SCREEN 3: POST-LOGIN SUCCESS BOTTOM SHEET
+             ==================================================================== -->
+        <div class="grocery-success-overlay" id="grocery-success-sheet" style="display: none;" onclick="if(event.target === this) window.BH_GROCERY.closeSuccessSheet()">
+          <div class="grocery-success-sheet" onclick="event.stopPropagation()">
+            <!-- Handle -->
+            <div class="grocery-success-handle"></div>
+
+            <!-- Centered green circular checkmark icon ✓ -->
+            <div class="grocery-success-icon-wrap">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+
+            <!-- Title -->
+            <h2 class="grocery-success-title">Successfully Logged In!</h2>
+
+            <!-- Body -->
+            <p class="grocery-success-body" id="grocery-success-body">
+              Your Zepto account has been linked successfully.
+            </p>
+
+            <!-- Store Tag -->
+            <div class="grocery-success-store-tag">
+              <img id="grocery-success-logo" src="assets/icons/zepto.svg" alt="Store">
+              <span>Real merchant credentials verified & synced</span>
+            </div>
+
+            <!-- Solid blue "Done" button -->
+            <button class="grocery-success-done-btn" id="btn-success-done" onclick="window.BH_GROCERY.closeSuccessSheet()">
+              Done
+            </button>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             MODAL 1: DELIVERY LOCATION & DARK STORE PINCODE SELECTOR
+             ==================================================================== -->
+        <div class="grocery-modal-overlay" id="grocery-location-modal" style="display: none;" onclick="if(event.target === this) window.BH_GROCERY.closeLocationModal()">
+          <div class="grocery-modal-sheet" onclick="event.stopPropagation()">
+            <div class="grocery-modal-header">
+              <div class="grocery-modal-title">
+                <span>📍</span>
+                <span>Select Delivery Location</span>
+              </div>
+              <button class="grocery-modal-close" onclick="window.BH_GROCERY.closeLocationModal()">✕</button>
+            </div>
+
+            <p style="font-size: 11.5px; color: #64748B; margin: -4px 0 0; line-height: 1.4;">
+              Quick commerce prices and inventory depend strictly on dark stores within <strong>2 km</strong> of your pincode / geohash.
+            </p>
+
+            <!-- Popular Quick Commerce Delivery Hubs -->
+            <div style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.4px;">
+              Popular 10-Minute Dark Store Hubs
+            </div>
+            <div class="location-hub-chips-grid">
+              <button type="button" class="hub-chip-btn active" onclick="window.BH_GROCERY.selectPincodePreset('560034')">
+                <span class="hub-chip-area">Koramangala 4th Block</span>
+                <span class="hub-chip-city">Bengaluru • 560034 (4 Dark Stores)</span>
+              </button>
+              <button type="button" class="hub-chip-btn" onclick="window.BH_GROCERY.selectPincodePreset('560038')">
+                <span class="hub-chip-area">Indiranagar 100ft Rd</span>
+                <span class="hub-chip-city">Bengaluru • 560038 (4 Dark Stores)</span>
+              </button>
+              <button type="button" class="hub-chip-btn" onclick="window.BH_GROCERY.selectPincodePreset('560102')">
+                <span class="hub-chip-area">HSR Layout Sector 2</span>
+                <span class="hub-chip-city">Bengaluru • 560102 (4 Dark Stores)</span>
+              </button>
+              <button type="button" class="hub-chip-btn" onclick="window.BH_GROCERY.selectPincodePreset('122002')">
+                <span class="hub-chip-area">DLF Cyber City / Ph 2</span>
+                <span class="hub-chip-city">Gurugram • 122002 (4 Dark Stores)</span>
+              </button>
+              <button type="button" class="hub-chip-btn" onclick="window.BH_GROCERY.selectPincodePreset('400076')">
+                <span class="hub-chip-area">Powai / Hiranandani</span>
+                <span class="hub-chip-city">Mumbai • 400076 (4 Dark Stores)</span>
+              </button>
+              <button type="button" class="hub-chip-btn" onclick="window.BH_GROCERY.selectPincodePreset('110001')">
+                <span class="hub-chip-area">Connaught Place</span>
+                <span class="hub-chip-city">New Delhi • 110001 (4 Dark Stores)</span>
+              </button>
+            </div>
+
+            <!-- Custom 6-digit Indian Pincode -->
+            <div style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.4px; margin-top: 4px;">
+              Or Enter Any 6-Digit Indian Pincode
+            </div>
+            <div class="pincode-input-row">
+              <input type="text" id="grocery-custom-pincode-input" class="pincode-input-box" placeholder="e.g. 560001 or 400050" maxlength="6" inputmode="numeric">
+              <button type="button" class="pincode-submit-btn" onclick="window.BH_GROCERY.applyCustomPincode()">Detect</button>
+            </div>
+
+            <!-- GPS Auto Geolocation -->
+            <button type="button" class="gps-detect-btn" onclick="window.BH_GROCERY.detectGpsLocation()">
+              <span>🎯</span>
+              <span>Use Current GPS Geohash (Auto-Locate)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             MODAL 2: OFFICIAL ONDC 1-TAP IN-APP CHECKOUT
+             ==================================================================== -->
+        <div class="grocery-modal-overlay" id="grocery-ondc-checkout-modal" style="display: none;" onclick="if(event.target === this) window.BH_GROCERY.closeOndcCheckout()">
+          <div class="grocery-modal-sheet" onclick="event.stopPropagation()">
+            <div class="grocery-modal-header">
+              <div class="grocery-modal-title">
+                <span style="font-size: 20px;">🇮🇳</span>
+                <span>ONDC 1-Tap Checkout</span>
+              </div>
+              <button class="grocery-modal-close" onclick="window.BH_GROCERY.closeOndcCheckout()">✕</button>
+            </div>
+
+            <!-- ONDC Govt of India Network Badge -->
+            <div class="ondc-badge-banner">
+              <span class="ondc-flag-icon">🇮🇳</span>
+              <div>
+                <div class="ondc-banner-title">Open Network for Digital Commerce (ONDC)</div>
+                <div class="ondc-banner-sub">Government of India Protocol • Direct seller connection with zero middleman markup</div>
+              </div>
+            </div>
+
+            <!-- Seller Node & Delivery Destination with Editable Address -->
+            <div class="ondc-seller-card">
+              <div class="ondc-seller-title">
+                <img src="assets/icons/bigbasket.svg" style="width: 16px; height: 16px; border-radius: 3px;" alt="BigBasket">
+                <span id="ondc-seller-node-name">BigBasket Now (ONDC Node #429)</span>
+              </div>
+              <div class="ondc-seller-sub" style="color: #047857; font-weight: 700;">
+                ⚡ Delivery in <strong id="ondc-eta-text">18 mins</strong> via ONDC Hyperlocal Logistics
+              </div>
+
+              <!-- Editable Address Details -->
+              <div style="margin-top: 6px; padding-top: 8px; border-top: 1px dashed #CBD5E1; display: flex; flex-direction: column; gap: 6px;">
+                <div style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase;">Delivery Address & Receiver</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+                  <input type="text" id="ondc-receiver-name" class="pincode-input-box" style="font-size: 12px; padding: 6px 10px;" value="Hatke Shopper" placeholder="Receiver Name">
+                  <input type="text" id="ondc-receiver-phone" class="pincode-input-box" style="font-size: 12px; padding: 6px 10px;" value="+91 98765 43210" placeholder="Mobile Number">
+                </div>
+                <input type="text" id="ondc-receiver-flat" class="pincode-input-box" style="font-size: 12px; padding: 6px 10px;" value="Flat 402, Sunshine Heights, 80ft Road" placeholder="Flat / House No / Landmark">
+                <div style="font-size: 10.5px; color: #64748B;">
+                  📍 Area: <strong id="ondc-delivery-address-text">Koramangala 4th Block, Bengaluru (560034)</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Items In Cart Bill Breakdown -->
+            <div class="ondc-bill-summary">
+              <div style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase;">
+                Order Summary (<span id="ondc-items-count">3 items</span>)
+              </div>
+              <div id="ondc-items-list" style="display: flex; flex-direction: column; gap: 6px; max-height: 140px; overflow-y: auto;">
+                <!-- Populated dynamically -->
+              </div>
+              <div class="ondc-bill-row" style="margin-top: 6px;">
+                <span>Item Subtotal</span>
+                <span id="ondc-subtotal-val">₹380</span>
+              </div>
+              <div class="ondc-bill-row">
+                <span>ONDC Delivery Fee</span>
+                <span style="color: #16A34A; font-weight: 700;">FREE (Network Benefit)</span>
+              </div>
+              <div class="ondc-bill-row">
+                <span>ONDC Protocol & Network Fee</span>
+                <span>₹2.50</span>
+              </div>
+              <div class="ondc-bill-row">
+                <span>Taxes & GST (5%)</span>
+                <span id="ondc-taxes-val">₹19.00</span>
+              </div>
+              <div class="ondc-bill-row total-row">
+                <span>Total Amount to Pay</span>
+                <span id="ondc-grand-total-val" style="color: #059669;">₹401.50</span>
+              </div>
+            </div>
+
+            <!-- Payment Method Selector -->
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase;">Select Payment Mode</div>
+              <label style="display: flex; align-items: center; gap: 10px; background: #F8FAFC; border: 1.5px solid #CBD5E1; padding: 10px 14px; border-radius: 12px; cursor: pointer;">
+                <input type="radio" name="ondc-payment" value="UPI_GPAY" checked>
+                <div style="display: flex; flex-direction: column;">
+                  <span style="font-size: 13px; font-weight: 700; color: #0F172A;">Instant UPI (GPay / PhonePe / Paytm / BHIM QR)</span>
+                  <span style="font-size: 10.5px; color: #059669; font-weight: 600;">⚡ Instant bank approval via NPCI switch</span>
+                </div>
+              </label>
+              <label style="display: flex; align-items: center; gap: 10px; background: #F8FAFC; border: 1.5px solid #CBD5E1; padding: 10px 14px; border-radius: 12px; cursor: pointer;">
+                <input type="radio" name="ondc-payment" value="COD">
+                <div style="display: flex; flex-direction: column;">
+                  <span style="font-size: 13px; font-weight: 700; color: #0F172A;">Cash on Delivery (Pay at Doorstep via Cash or QR)</span>
+                  <span style="font-size: 10.5px; color: #64748B;">Pay delivery rider Ramesh Kumar upon handover</span>
+                </div>
+              </label>
+            </div>
+
+            <button type="button" class="ondc-pay-btn" id="btn-place-ondc-order" onclick="window.BH_GROCERY.submitOndcOrder()">
+              <span>🚀 Proceed to Pay & Place Order • <span id="ondc-btn-amount">₹401.50</span></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             MODAL 3: ONDC & QUICK COMMERCE LIVE 10-MINUTE ORDER TRACKER
+             ==================================================================== -->
+        <div class="grocery-modal-overlay" id="grocery-ondc-tracking-modal" style="display: none;" onclick="if(event.target === this) window.BH_GROCERY.closeTrackingModal()">
+          <div class="grocery-modal-sheet" onclick="event.stopPropagation()">
+            <div class="grocery-modal-header">
+              <div class="grocery-modal-title">
+                <span>⚡</span>
+                <span id="tracker-title-heading">Live 10-Minute Delivery</span>
+              </div>
+              <button class="grocery-modal-close" onclick="window.BH_GROCERY.closeTrackingModal()">✕</button>
+            </div>
+
+            <!-- Prominent Countdown Header -->
+            <div class="tracker-eta-header">
+              <div class="tracker-eta-label">Estimated Doorstep Arrival</div>
+              <div class="tracker-eta-time" id="tracker-eta-display">⚡ 08:35 mins</div>
+              <div class="tracker-eta-status" id="tracker-current-status-text">🛵 Packing at dark store • Rider assigned</div>
+            </div>
+
+            <!-- Doorstep Delivery PIN Banner -->
+            <div class="delivery-pin-banner">
+              <div class="pin-label-group">
+                <span class="pin-label-title">🔑 Doorstep Delivery PIN</span>
+                <span class="pin-label-sub">Share this code with rider upon arrival</span>
+              </div>
+              <div class="pin-digits-box" id="tracker-delivery-pin-val">4892</div>
+            </div>
+
+            <!-- Order Meta Strip -->
+            <div style="display: flex; justify-content: space-between; align-items: center; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 8px 12px; font-size: 11px;">
+              <span style="color: #64748B;">Order: <strong id="tracker-order-id-label" style="color: #0F172A;">ONDC-BH-892410</strong></span>
+              <button onclick="window.BH_GROCERY.openInvoiceModal(window.BH_GROCERY.activeOndcOrderId)" style="background:none; border:none; color:#4F46E5; font-weight:700; cursor:pointer;">View Bill 📄</button>
+            </div>
+
+            <!-- 5-Stage Live Timeline -->
+            <div class="tracker-timeline" id="tracker-timeline-container">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- Rider Profile Card -->
+            <div class="tracker-rider-card" id="tracker-rider-card">
+              <div class="tracker-rider-left">
+                <div class="tracker-rider-avatar">🛵</div>
+                <div class="tracker-rider-info">
+                  <span class="tracker-rider-name" id="tracker-rider-name">Ramesh Kumar</span>
+                  <span class="tracker-rider-vehicle" id="tracker-rider-vehicle">Hero Electric Nyx • 4.9 ★</span>
+                </div>
+              </div>
+              <button type="button" class="tracker-call-btn" onclick="alert('📞 Calling delivery rider Ramesh Kumar (+91 98450 12345)...')">
+                📞 Call Rider
+              </button>
+            </div>
+
+            <!-- Doorstep PIN Verification Handover Box (For Testing & Live Handover) -->
+            <div class="doorstep-verify-box" id="doorstep-handover-box">
+              <div style="font-size: 11.5px; font-weight: 800; color: #1E3A8A;">🤝 Complete Doorstep Handover</div>
+              <p style="font-size: 11px; color: #3B82F6; margin: 0;">Enter your 4-digit PIN below to confirm rider handover:</p>
+              <div class="pin-input-group">
+                <input type="text" id="handover-pin-input" class="pin-input-field" placeholder="Enter PIN (e.g. 4892)" maxlength="4" inputmode="numeric">
+                <button type="button" class="btn-verify-pin" onclick="window.BH_GROCERY.verifyDoorstepPin()">Verify & Complete ✓</button>
+              </div>
+            </div>
+
+            <!-- 5-Star Rating Section (Shown on Delivery) -->
+            <div class="doorstep-verify-box" id="doorstep-rating-box" style="display: none; background: #FEF3C7; border-color: #FDE68A;">
+              <div style="font-size: 12px; font-weight: 800; color: #92400E; text-align: center;">🎉 Order Delivered! Rate Your Experience</div>
+              <div class="star-rating-row" id="star-rating-row">
+                <button class="star-btn" onclick="window.BH_GROCERY.rateOrder(1)">★</button>
+                <button class="star-btn" onclick="window.BH_GROCERY.rateOrder(2)">★</button>
+                <button class="star-btn" onclick="window.BH_GROCERY.rateOrder(3)">★</button>
+                <button class="star-btn" onclick="window.BH_GROCERY.rateOrder(4)">★</button>
+                <button class="star-btn rated" onclick="window.BH_GROCERY.rateOrder(5)">★</button>
+              </div>
+              <div style="font-size: 11px; color: #B45309; text-align: center;">5.0 ★ Excellent delivery by Ramesh Kumar</div>
+            </div>
+
+            <!-- Fast Forward Demo Step Trigger -->
+            <button type="button" class="tracker-advance-btn" onclick="window.BH_GROCERY.advanceTrackingStep()">
+              ⚡ Test: Advance Delivery Stage ➔
+            </button>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             MODAL 4: INTERACTIVE UPI PAYMENT GATEWAY (NPCI APPROVED SIMULATOR)
+             ==================================================================== -->
+        <div class="grocery-modal-overlay" id="grocery-upi-payment-modal" style="display: none;" onclick="if(event.target === this) window.BH_GROCERY.closeUpiModal()">
+          <div class="grocery-modal-sheet" onclick="event.stopPropagation()">
+            <div class="grocery-modal-header">
+              <div class="grocery-modal-title">
+                <span>🔒</span>
+                <span>UPI Payment Gateway</span>
+              </div>
+              <button class="grocery-modal-close" onclick="window.BH_GROCERY.closeUpiModal()">✕</button>
+            </div>
+
+            <!-- Header with Amount & Timer -->
+            <div class="upi-gateway-header">
+              <div>
+                <div class="upi-amount-title">Total Payable Amount</div>
+                <div class="upi-amount-value" id="upi-modal-amount">₹401.50</div>
+              </div>
+              <div class="upi-timer-badge" id="upi-timer-countdown">⏳ 04:59 mins</div>
+            </div>
+
+            <!-- Tabs: QR Code vs UPI Apps vs UPI ID -->
+            <div class="upi-tabs-nav">
+              <button type="button" class="upi-tab-btn active" id="tab-upi-qr" onclick="window.BH_GROCERY.switchUpiTab('qr')">Scan QR Code</button>
+              <button type="button" class="upi-tab-btn" id="tab-upi-apps" onclick="window.BH_GROCERY.switchUpiTab('apps')">UPI Apps</button>
+              <button type="button" class="upi-tab-btn" id="tab-upi-id" onclick="window.BH_GROCERY.switchUpiTab('id')">Enter UPI ID</button>
+            </div>
+
+            <!-- TAB 1: QR CODE VIEW -->
+            <div id="upi-view-qr" class="upi-qr-container">
+              <div class="upi-qr-card">
+                <!-- Authentic SVG QR Code Graphic -->
+                <svg viewBox="0 0 100 100" fill="#0F172A">
+                  <path d="M10 10h24v24H10zM14 14v16h16V14H14zM18 18h8v8h-8z"/>
+                  <path d="M66 10h24v24H66zM70 14v16h16V14H70zM74 18h8v8h-8z"/>
+                  <path d="M10 66h24v24H10zM14 70v16h16V70H14zM18 74h8v8h-8z"/>
+                  <rect x="42" y="12" width="6" height="6"/>
+                  <rect x="52" y="12" width="6" height="6"/>
+                  <rect x="42" y="24" width="6" height="6"/>
+                  <rect x="52" y="28" width="6" height="12"/>
+                  <rect x="12" y="42" width="12" height="6"/>
+                  <rect x="28" y="42" width="6" height="12"/>
+                  <rect x="42" y="42" width="16" height="16" fill="#5855E5"/>
+                  <rect x="66" y="42" width="6" height="12"/>
+                  <rect x="76" y="42" width="12" height="6"/>
+                  <rect x="66" y="60" width="8" height="8"/>
+                  <rect x="80" y="60" width="8" height="8"/>
+                  <rect x="42" y="66" width="6" height="12"/>
+                  <rect x="52" y="74" width="12" height="6"/>
+                  <rect x="66" y="74" width="8" height="14"/>
+                  <rect x="80" y="74" width="8" height="14"/>
+                </svg>
+                <div class="upi-qr-scan-line"></div>
+              </div>
+              <div style="font-size: 11.5px; color: #475569; font-weight: 600;">
+                Scan with GPay, PhonePe, Paytm, CRED or any UPI App
+              </div>
+            </div>
+
+            <!-- TAB 2: UPI APPS VIEW -->
+            <div id="upi-view-apps" class="upi-qr-container" style="display: none;">
+              <div style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase;">Select Installed UPI App</div>
+              <div class="upi-apps-row">
+                <div class="upi-app-chip selected" onclick="window.BH_GROCERY.selectUpiApp(this, 'GPay')">
+                  <span style="font-size: 24px;">🌐</span>
+                  <span>Google Pay</span>
+                </div>
+                <div class="upi-app-chip" onclick="window.BH_GROCERY.selectUpiApp(this, 'PhonePe')">
+                  <span style="font-size: 24px;">🟣</span>
+                  <span>PhonePe</span>
+                </div>
+                <div class="upi-app-chip" onclick="window.BH_GROCERY.selectUpiApp(this, 'Paytm')">
+                  <span style="font-size: 24px;">🔵</span>
+                  <span>Paytm</span>
+                </div>
+                <div class="upi-app-chip" onclick="window.BH_GROCERY.selectUpiApp(this, 'BHIM')">
+                  <span style="font-size: 24px;">🇮🇳</span>
+                  <span>BHIM UPI</span>
+                </div>
+                <div class="upi-app-chip" onclick="window.BH_GROCERY.selectUpiApp(this, 'CRED')">
+                  <span style="font-size: 24px;">💳</span>
+                  <span>CRED UPI</span>
+                </div>
+                <div class="upi-app-chip" onclick="window.BH_GROCERY.selectUpiApp(this, 'WhatsApp')">
+                  <span style="font-size: 24px;">💬</span>
+                  <span>WhatsApp Pay</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 3: ENTER UPI ID VIEW -->
+            <div id="upi-view-id" class="upi-qr-container" style="display: none;">
+              <div style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase;">Enter Virtual Payment Address (VPA)</div>
+              <div class="pincode-input-row" style="width: 100%;">
+                <input type="text" id="custom-upi-id-input" class="pincode-input-box" value="9876543210@okhdfcbank" placeholder="yourname@upi">
+              </div>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <span class="radar-chip" style="cursor: pointer;" onclick="document.getElementById('custom-upi-id-input').value='9876543210@okhdfcbank'">@okhdfcbank</span>
+                <span class="radar-chip" style="cursor: pointer;" onclick="document.getElementById('custom-upi-id-input').value='9876543210@ybl'">@ybl</span>
+                <span class="radar-chip" style="cursor: pointer;" onclick="document.getElementById('custom-upi-id-input').value='9876543210@paytm'">@paytm</span>
+                <span class="radar-chip" style="cursor: pointer;" onclick="document.getElementById('custom-upi-id-input').value='9876543210@upi'">@upi</span>
+              </div>
+            </div>
+
+            <!-- Action: Simulate Payment Success -->
+            <button type="button" class="btn-simulate-pay" id="btn-confirm-upi-payment" onclick="window.BH_GROCERY.executeUpiPayment()">
+              <span>⚡ Simulate Instant UPI Bank Approval ➔</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             MODAL 5: IN-APP STORE CHECKOUT MODAL (ZEPTO, BLINKIT, INSTAMART)
+             ==================================================================== -->
+        <div class="grocery-modal-overlay" id="inapp-store-checkout-modal" style="display: none;" onclick="if(event.target === this) window.BH_GROCERY.closeStoreCheckout()">
+          <div class="grocery-modal-sheet" onclick="event.stopPropagation()">
+            <div class="modal-header-bar" id="store-checkout-header-bar" style="border-radius: 14px; padding: 12px 14px; margin: -6px 0 6px;">
+              <div class="modal-brand-left">
+                <div class="modal-icon-circle">
+                  <img id="store-checkout-logo" src="assets/icons/zepto.svg" alt="Store" class="modal-store-logo">
+                </div>
+                <div>
+                  <h3 id="store-checkout-name" class="modal-store-title">Zepto In-App Checkout</h3>
+                  <span class="modal-rail-tag" id="store-checkout-tag">⚡ 10-Minute Dark Store Rail</span>
+                </div>
+              </div>
+              <button class="modal-close-btn" onclick="window.BH_GROCERY.closeStoreCheckout()">✕</button>
+            </div>
+
+            <!-- Verified Linked Session Banner -->
+            <div style="background: #F1F5F9; border: 1px solid #E2E8F0; border-radius: 12px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 11px; font-weight: 800; color: #0F172A;">🔗 Linked Account Session Active</div>
+                <div style="font-size: 10.5px; color: #64748B;">Mobile: +91 98765 43210 • Cart preloaded</div>
+              </div>
+              <span style="font-size: 10px; font-weight: 800; color: #059669; background: #ECFDF5; padding: 3px 8px; border-radius: 20px;">SYNCED ✓</span>
+            </div>
+
+            <!-- Delivery Address -->
+            <div class="ondc-seller-card">
+              <div style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase;">Delivery Destination</div>
+              <div style="font-size: 12px; font-weight: 700; color: #0F172A;" id="store-checkout-address-text">
+                Flat 402, Sunshine Heights, Koramangala 4th Block, Bengaluru (560034)
+              </div>
+              <div style="font-size: 11px; color: #047857; font-weight: 700;">
+                ⚡ Estimated Arrival: <span id="store-checkout-eta-val">8 mins</span>
+              </div>
+            </div>
+
+            <!-- Cart Items Summary -->
+            <div class="ondc-bill-summary">
+              <div style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase;">
+                Cart Items (<span id="store-checkout-items-count">3 items</span>)
+              </div>
+              <div id="store-checkout-items-list" style="display: flex; flex-direction: column; gap: 6px; max-height: 120px; overflow-y: auto;">
+                <!-- Populated dynamically -->
+              </div>
+              <div class="ondc-bill-row" style="margin-top: 6px;">
+                <span>Item Subtotal</span>
+                <span id="store-checkout-subtotal">₹350</span>
+              </div>
+              <div class="ondc-bill-row">
+                <span>Delivery Fee</span>
+                <span id="store-checkout-delivery-fee" style="color: #16A34A; font-weight: 700;">FREE</span>
+              </div>
+              <div class="ondc-bill-row">
+                <span>Handling & Platform Fee</span>
+                <span id="store-checkout-handling-fee">₹5.00</span>
+              </div>
+              <div class="ondc-bill-row" id="store-coupon-row" style="color: #059669; font-weight: 700;">
+                <span>Coupon Discount (<span id="store-coupon-code">ZEPTO75</span>)</span>
+                <span id="store-checkout-discount">-₹50.00</span>
+              </div>
+              <div class="ondc-bill-row total-row">
+                <span>Total Amount to Pay</span>
+                <span id="store-checkout-grand-total" style="color: #059669;">₹305.00</span>
+              </div>
+            </div>
+
+            <!-- Payment Mode -->
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase;">Payment Mode</div>
+              <label style="display: flex; align-items: center; gap: 10px; background: #F8FAFC; border: 1.5px solid #CBD5E1; padding: 10px 14px; border-radius: 12px; cursor: pointer;">
+                <input type="radio" name="store-payment-mode" value="UPI" checked>
+                <span style="font-size: 13px; font-weight: 700; color: #0F172A;">Instant UPI (GPay / PhonePe / Paytm / QR)</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 10px; background: #F8FAFC; border: 1.5px solid #CBD5E1; padding: 10px 14px; border-radius: 12px; cursor: pointer;">
+                <input type="radio" name="store-payment-mode" value="COD">
+                <span style="font-size: 13px; font-weight: 700; color: #0F172A;">Cash on Delivery (Pay at Doorstep)</span>
+              </label>
+            </div>
+
+            <button type="button" class="ondc-pay-btn" id="btn-complete-store-order" onclick="window.BH_GROCERY.submitStoreOrder()">
+              <span>🚀 Proceed to Pay • <span id="store-btn-amount">₹305.00</span></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             MODAL 6: ORDER RECEIPT & TAX INVOICE MODAL
+             ==================================================================== -->
+        <div class="grocery-modal-overlay" id="grocery-order-receipt-modal" style="display: none;" onclick="if(event.target === this) window.BH_GROCERY.closeReceiptModal()">
+          <div class="grocery-modal-sheet" onclick="event.stopPropagation()">
+            <div class="grocery-modal-header">
+              <div class="grocery-modal-title">
+                <span>📄</span>
+                <span>Order Confirmation & Tax Invoice</span>
+              </div>
+              <button class="grocery-modal-close" onclick="window.BH_GROCERY.closeReceiptModal()">✕</button>
+            </div>
+
+            <!-- Confirmation Banner -->
+            <div class="receipt-header-banner">
+              <div class="receipt-check-circle">✓</div>
+              <div>
+                <div style="font-size: 16px; font-weight: 900;">Order Placed Successfully!</div>
+                <div style="font-size: 11px; opacity: 0.9;">Your 10-minute delivery is now being packed at dark store.</div>
+              </div>
+            </div>
+
+            <!-- Delivery PIN Highlight -->
+            <div class="delivery-pin-banner">
+              <div class="pin-label-group">
+                <span class="pin-label-title">🔑 Doorstep Delivery PIN</span>
+                <span class="pin-label-sub">Provide this PIN to your rider at delivery</span>
+              </div>
+              <div class="pin-digits-box" id="receipt-delivery-pin">4892</div>
+            </div>
+
+            <!-- Tax Invoice Details Sheet -->
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #E2E8F0; padding-bottom: 8px;">
+                <div>
+                  <div style="font-size: 13px; font-weight: 800; color: #0F172A;" id="receipt-store-name">BigBasket ONDC Network</div>
+                  <div style="font-size: 10px; color: #64748B;">GSTIN: 29AABCB1234F1Z5 • FSSAI Lic #112233440055</div>
+                </div>
+                <div style="text-align: right;">
+                  <div style="font-size: 11px; font-weight: 800; color: #0F172A;" id="receipt-order-id">ONDC-BH-892410</div>
+                  <div style="font-size: 10px; color: #64748B;" id="receipt-date-time">Just now</div>
+                </div>
+              </div>
+
+              <!-- Itemized Receipt Table -->
+              <table class="receipt-tax-table">
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th style="text-align: center;">Qty</th>
+                    <th style="text-align: right;">Amount</th>
+                  </tr>
+                </thead>
+                <tbody id="receipt-items-tbody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+
+              <div style="border-top: 1px dashed #CBD5E1; padding-top: 6px; display: flex; flex-direction: column; gap: 4px; font-size: 11.5px;">
+                <div style="display: flex; justify-content: space-between; color: #64748B;">
+                  <span>Subtotal</span>
+                  <span id="receipt-subtotal-val">₹380.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; color: #64748B;">
+                  <span>Delivery & Handling</span>
+                  <span style="color: #16A34A; font-weight: 700;">FREE</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; color: #64748B;">
+                  <span>Taxes (GST 5%)</span>
+                  <span id="receipt-taxes-val">₹19.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 900; color: #0F172A; border-top: 1px solid #E2E8F0; padding-top: 6px;">
+                  <span>Grand Total Paid</span>
+                  <span id="receipt-grand-total-val" style="color: #059669;">₹401.50</span>
+                </div>
+              </div>
+
+              <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 6px 10px; font-size: 10px; color: #64748B;">
+                💳 Paid via <strong id="receipt-payment-method">UPI (GPay)</strong> • UTR Ref: <span id="receipt-utr-val" style="font-family: monospace;">320984102931</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 8px;">
+              <button type="button" class="order-btn-invoice" style="flex: 1; padding: 12px;" onclick="window.print()">
+                🖨️ Print / Save PDF Invoice
+              </button>
+              <button type="button" class="ondc-pay-btn" style="flex: 1.2; height: 46px;" onclick="window.BH_GROCERY.closeReceiptModal(); window.BH_GROCERY.openActiveTrackingModal();">
+                <span>⚡ Track Live Delivery ➔</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             MODAL 7: MY ORDERS (ORDER HISTORY & TRACKING HUB)
+             ==================================================================== -->
+        <div class="grocery-modal-overlay" id="grocery-orders-history-modal" style="display: none;" onclick="if(event.target === this) window.BH_GROCERY.closeOrdersHistory()">
+          <div class="grocery-modal-sheet" onclick="event.stopPropagation()">
+            <div class="grocery-modal-header">
+              <div class="grocery-modal-title">
+                <span>🛍️</span>
+                <span>My Grocery Orders</span>
+              </div>
+              <button class="grocery-modal-close" onclick="window.BH_GROCERY.closeOrdersHistory()">✕</button>
+            </div>
+
+            <div id="orders-history-list" style="display: flex; flex-direction: column; gap: 10px; max-height: 480px; overflow-y: auto;">
+              <!-- Populated dynamically via fetchOrdersHistory() -->
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- 4. PRICE GRAPH & SHOPPING -->
+      <section class="app-view-tab" id="view-shopping" style="display: none;">
+        <div class="shopping-container" id="shopping-view">
+          <div class="product-search-wrapper">
+            <input type="text" id="shopping-search-input" class="product-search-input" placeholder="Search product or paste Amazon / Flipkart URL...">
+            <div class="search-action-icon" id="shopping-search-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+          </div>
+
+          <div class="product-chips-scroll" id="product-chips-container">
+            <div class="product-chip active" data-id="p1">Apple iPhone 16</div>
+            <div class="product-chip" data-id="p2">Sony WH-1000XM5</div>
+            <div class="product-chip" data-id="p3">MacBook Air M3</div>
+            <div class="product-chip" data-id="p4">Samsung Galaxy S24 Ultra</div>
+          </div>
+
+          <div class="product-hero-card" id="product-hero-card">
+            <div class="product-hero-top">
+              <div class="product-hero-img-wrap">
+                <img id="product-img-el" src="" alt="Product Image">
+              </div>
+              <div class="product-hero-details">
+                <h3 class="product-name-title" id="product-title-el">Product Title</h3>
+                <p class="product-specs-sub" id="product-specs-el">Specs description</p>
+                <div class="product-prices-row">
+                  <span class="product-curr-price" id="product-best-price-el">₹0</span>
+                  <span class="product-mrp-strike" id="product-mrp-el">MRP ₹0</span>
+                  <span class="badge-cheapest" id="product-savings-badge">BEST PRICE</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bh-verdict-banner">
+              <span class="verdict-icon">💡</span>
+              <span class="verdict-text" id="product-verdict-el">Analyzing price history...</span>
+            </div>
+
+            <div class="price-graph-container">
+              <div class="graph-header">
+                <div class="graph-title">
+                  <span>📈 Price History Graph</span>
+                </div>
+                <div class="graph-timeframe-pills">
+                  <span class="graph-tf-pill" data-days="30">30D</span>
+                  <span class="graph-tf-pill" data-days="60">60D</span>
+                  <span class="graph-tf-pill active" data-days="90">90D</span>
+                  <span class="graph-tf-pill" data-days="180">180D</span>
+                </div>
+              </div>
+
+              <div class="graph-canvas-wrap">
+                <canvas id="price-history-canvas"></canvas>
+              </div>
+
+              <div class="graph-stats-row">
+                <div class="graph-stat-box">
+                  <span class="graph-stat-label">Lowest Ever</span>
+                  <span class="graph-stat-val lowest" id="stat-lowest-el">₹0</span>
+                </div>
+                <div class="graph-stat-box">
+                  <span class="graph-stat-label">90-Day Avg</span>
+                  <span class="graph-stat-val" id="stat-average-el">₹0</span>
+                </div>
+                <div class="graph-stat-box">
+                  <span class="graph-stat-label">Highest Ever</span>
+                  <span class="graph-stat-val highest" id="stat-highest-el">₹0</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="shopping-actions-row">
+              <button class="action-card-btn" id="btn-set-price-alert">
+                <span>🔔</span> Set Drop Alert
+              </button>
+              <button class="action-card-btn" id="btn-test-auto-coupons">
+                <span>⚡</span> Test Coupons
+              </button>
+            </div>
+          </div>
+
+          <div class="lookalike-card">
+            <div>
+              <div class="lookalike-title">🛍️ Look-A-Like Finder</div>
+              <div class="lookalike-sub">Found 4 cheaper alternative dupes on Meesho & Ajio</div>
+            </div>
+            <button class="lookalike-btn" onclick="window.BH_APP.showToast('🔍 Found 3 dupes starting at ₹1,499 on Meesho!')">View Dupes</button>
+          </div>
+
+          <div class="section-header-row">
+            <h4 class="section-title">🏪 Available Stores Comparison</h4>
+            <span class="section-see-all" id="refresh-store-prices">Refresh Live 🔄</span>
+          </div>
+          <div class="store-comparisons-list" id="stores-comparison-list"></div>
+        </div>
+      </section>
+
+      <!-- 5. IN-APP BROWSER (SUPER BROWSE) -->
+      <section class="app-view-tab" id="view-inapp-browser" style="display: none;">
+        <div class="inapp-browser-container" id="inapp-browser-view">
+          <div class="vault-status-card">
+            <div class="vault-header-row">
+              <div class="vault-title">
+                <span>🔐 In-App Browser & Account Vault</span>
+              </div>
+              <span class="vault-badge">6 / 8 CONNECTED</span>
+            </div>
+            <p class="vault-desc">
+              Super Browse lets you browse products and book rides across all your linked accounts without switching apps. Compare carts in real time and checkout directly in one tap.
+            </p>
+            <div class="vault-stats-grid">
+              <div class="vault-stat-col">
+                <span class="vault-stat-label">Active Sessions</span>
+                <span class="vault-stat-num" id="stat-active-sessions">6 Apps</span>
+              </div>
+              <div class="vault-stat-col">
+                <span class="vault-stat-label">Cart Synced</span>
+                <span class="vault-stat-num" id="stat-synced-items">5 Items</span>
+              </div>
+              <div class="vault-stat-col">
+                <span class="vault-stat-label">Time Saved</span>
+                <span class="vault-stat-num">4.5 Hrs</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-header-row">
+            <h4 class="section-title">📱 Your Connected Platforms</h4>
+            <span class="section-see-all" id="btn-sync-all-accounts">Sync All 🔄</span>
+          </div>
+
+          <div class="linked-platforms-grid" id="linked-platforms-grid"></div>
+        </div>
+      </section>
+
+      <!-- 6. FLIGHTS TAB -->
+      <section class="app-view-tab" id="view-flights" style="display: none;">
+        <div class="flights-container" id="flights-view">
+          <div class="flight-header-row">
+            <h3 class="flight-header-title">✈️ Flights & Transport Matrix</h3>
+            <button class="flight-bookings-btn" id="btn-open-travel-bookings" onclick="window.BH_FLIGHTS.openTravelHistory()">
+              <span>✈️ My Bookings</span>
+              <span id="travel-bookings-nav-count" style="background: var(--bh-cyan); color: #0b132b; padding: 1px 6px; border-radius: 10px; font-size: 10px; font-weight: 800;">0</span>
+            </button>
+          </div>
+
+          <div class="flight-search-card">
+            <div class="flight-cities-row">
+              <div class="city-select-box" id="flight-from-box">
+                <span class="city-label">From</span>
+                <span class="city-code" id="flight-from-code">DEL</span>
+                <span class="city-name" id="flight-from-name">New Delhi</span>
+              </div>
+              <button class="flight-swap-btn" id="swap-flight-cities-btn" title="Swap cities">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+                </svg>
+              </button>
+              <div class="city-select-box" id="flight-to-box">
+                <span class="city-label">To</span>
+                <span class="city-code" id="flight-to-code">BOM</span>
+                <span class="city-name" id="flight-to-name">Mumbai</span>
+              </div>
+            </div>
+
+            <div class="flight-date-class-row">
+              <div class="info-field-box">
+                <label>Departure Date</label>
+                <div class="info-field-val">Tomorrow, 6 Oct</div>
+              </div>
+              <div class="info-field-box">
+                <label>Travellers & Class</label>
+                <div class="info-field-val">1 Adult, Economy</div>
+              </div>
+            </div>
+
+            <div class="flight-sector-pills" id="flight-sector-pills">
+              <div class="flight-sector-pill active" data-sector="DEL-BOM">DEL ✈ BOM</div>
+              <div class="flight-sector-pill" data-sector="BLR-DEL">BLR ✈ DEL</div>
+              <div class="flight-sector-pill" data-sector="BOM-GOI">BOM ✈ GOI</div>
+            </div>
+          </div>
+
+          <div class="flights-ticket-list" id="flights-list-container"></div>
+        </div>
+
+        <!-- ====================================================================
+             MODAL 1: PASSENGER BOOKING & SEAT SELECTION
+             ==================================================================== -->
+        <div class="flight-modal-overlay" id="travel-booking-modal" style="display: none;" onclick="if(event.target === this) window.BH_FLIGHTS.closeBookingModal()">
+          <div class="flight-modal-sheet" onclick="event.stopPropagation()">
+            <div class="flight-modal-header">
+              <div class="flight-modal-title">
+                <span id="travel-modal-airline-icon">✈️</span>
+                <span id="travel-modal-flight-title">Book Flight Ticket</span>
+              </div>
+              <button class="flight-modal-close" onclick="window.BH_FLIGHTS.closeBookingModal()">✕</button>
+            </div>
+
+            <!-- Flight Summary Strip -->
+            <div class="flight-summary-strip">
+              <div class="flight-strip-top">
+                <div class="flight-strip-airline">
+                  <img src="assets/icons/indigo.svg" id="travel-strip-icon" alt="Airline">
+                  <span id="travel-strip-airline-name">IndiGo (6E-2131)</span>
+                </div>
+                <span class="badge-pill-tag badge-cheapest" id="travel-strip-portal-tag">EaseMyTrip Promo</span>
+              </div>
+              <div class="flight-strip-sector">
+                <span>🛫 <strong id="travel-strip-from">DEL (06:00)</strong></span>
+                <span style="font-size: 11px; color: #64748B;" id="travel-strip-duration">2h 15m (Non-stop)</span>
+                <span>🛬 <strong id="travel-strip-to">BOM (08:15)</strong></span>
+              </div>
+            </div>
+
+            <!-- Passenger Details Form -->
+            <div class="passenger-form-group">
+              <div style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase;">Passenger Information</div>
+              <input type="text" id="travel-passenger-name" class="passenger-input-box" value="Hatke Traveler" placeholder="Passenger Full Name (as per Govt ID)">
+              <div style="display: flex; gap: 8px;">
+                <input type="tel" id="travel-passenger-phone" class="passenger-input-box" value="+91 98765 43210" placeholder="Mobile Number">
+                <input type="email" id="travel-passenger-email" class="passenger-input-box" value="traveler@buyhatke.com" placeholder="Email Address">
+              </div>
+            </div>
+
+            <!-- Seat Selector -->
+            <div class="seat-selector-section">
+              <div class="seat-selector-label">Select Preferred Seat</div>
+              <div class="seat-selector-grid" id="travel-seat-selector">
+                <div class="seat-chip active" data-seat="12A (Window)" onclick="window.BH_FLIGHTS.selectSeat(this, '12A (Window)')">
+                  <span class="seat-chip-code">12A</span>
+                  <span class="seat-chip-type">Window</span>
+                </div>
+                <div class="seat-chip" data-seat="12B (Middle)" onclick="window.BH_FLIGHTS.selectSeat(this, '12B (Middle)')">
+                  <span class="seat-chip-code">12B</span>
+                  <span class="seat-chip-type">Middle</span>
+                </div>
+                <div class="seat-chip" data-seat="12C (Aisle)" onclick="window.BH_FLIGHTS.selectSeat(this, '12C (Aisle)')">
+                  <span class="seat-chip-code">12C</span>
+                  <span class="seat-chip-type">Aisle</span>
+                </div>
+                <div class="seat-chip" data-seat="2F (Front Window)" onclick="window.BH_FLIGHTS.selectSeat(this, '2F (Front Window)')">
+                  <span class="seat-chip-code">2F</span>
+                  <span class="seat-chip-type">Extra Legroom</span>
+                </div>
+              </div>
+              <div style="font-size: 10.5px; color: #059669; font-weight: 600; display: flex; align-items: center; gap: 4px; margin-top: 2px;">
+                <span>🧳 Included Free: 15 kg Check-in + 7 kg Cabin Handbag</span>
+              </div>
+            </div>
+
+            <!-- Price Breakdown -->
+            <div class="flight-bill-breakdown">
+              <div class="flight-bill-row">
+                <span>Base Airfare</span>
+                <span id="travel-bill-base">₹4,590</span>
+              </div>
+              <div class="flight-bill-row" style="color: #16A34A; font-weight: 700;">
+                <span id="travel-bill-portal-name">EaseMyTrip Promo Discount</span>
+                <span id="travel-bill-discount">-₹400</span>
+              </div>
+              <div class="flight-bill-row">
+                <span>Convenience Fee</span>
+                <span style="color: #16A34A; font-weight: 700;">₹0 (Free via Buyhatke)</span>
+              </div>
+              <div class="flight-bill-row total-row">
+                <span>Grand Total to Pay</span>
+                <span id="travel-bill-total" style="color: #0284C7;">₹4,190</span>
+              </div>
+            </div>
+
+            <!-- Payment Mode Selector -->
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase;">Payment Method</div>
+              <label style="display: flex; align-items: center; gap: 10px; background: #F8FAFC; border: 1.5px solid #CBD5E1; padding: 10px 12px; border-radius: 12px; cursor: pointer;">
+                <input type="radio" name="travel-payment-mode" value="UPI" checked>
+                <div style="display: flex; flex-direction: column;">
+                  <span style="font-size: 12.5px; font-weight: 700; color: #0F172A;">Instant UPI (GPay / PhonePe / Paytm / CRED)</span>
+                  <span style="font-size: 10.5px; color: #16A34A; font-weight: 600;">⚡ Instant automated ticket issuance</span>
+                </div>
+              </label>
+              <label style="display: flex; align-items: center; gap: 10px; background: #F8FAFC; border: 1.5px solid #CBD5E1; padding: 10px 12px; border-radius: 12px; cursor: pointer;">
+                <input type="radio" name="travel-payment-mode" value="CARD">
+                <div style="display: flex; flex-direction: column;">
+                  <span style="font-size: 12.5px; font-weight: 700; color: #0F172A;">Credit / Debit Card / Netbanking</span>
+                  <span style="font-size: 10.5px; color: #64748B;">Visa, Mastercard, RuPay & Amex</span>
+                </div>
+              </label>
+            </div>
+
+            <button type="button" class="flight-confirm-pay-btn" id="btn-submit-travel-booking" onclick="window.BH_FLIGHTS.submitTravelBooking()">
+              <span>✈️ Confirm & Issue Boarding Pass ➔</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             MODAL 2: DIGITAL BOARDING PASS & E-TICKET
+             ==================================================================== -->
+        <div class="flight-modal-overlay" id="travel-ticket-modal" style="display: none;" onclick="if(event.target === this) window.BH_FLIGHTS.closeTicketModal()">
+          <div class="flight-modal-sheet" onclick="event.stopPropagation()">
+            <div class="flight-modal-header">
+              <div class="flight-modal-title">
+                <span>🎫</span>
+                <span>Official Digital Boarding Pass</span>
+              </div>
+              <button class="flight-modal-close" onclick="window.BH_FLIGHTS.closeTicketModal()">✕</button>
+            </div>
+
+            <!-- Authentic Boarding Pass Card -->
+            <div class="boarding-pass-card">
+              <div class="boarding-pass-header">
+                <div class="bp-airline-title">
+                  <span style="font-size: 18px;">✈️</span>
+                  <span id="bp-airline-name">IndiGo • 6E-2131</span>
+                </div>
+                <div class="bp-pnr-badge">
+                  <span>PNR: </span><span id="bp-pnr-val">6E-BH83270</span>
+                </div>
+              </div>
+
+              <div class="boarding-pass-body">
+                <!-- Sector Hero Row -->
+                <div class="bp-route-hero">
+                  <div class="bp-station-col">
+                    <span class="bp-city-code" id="bp-from-code">DEL</span>
+                    <span class="bp-city-time" id="bp-dep-time">06:00</span>
+                    <span style="font-size: 10px; color: #64748B;" id="bp-from-city">New Delhi (DEL T3)</span>
+                  </div>
+                  <div style="text-align: center;">
+                    <span class="bp-flight-plane-icon">✈</span>
+                    <div style="font-size: 10px; color: #0284C7; font-weight: 700;" id="bp-duration-val">2h 15m</div>
+                  </div>
+                  <div class="bp-station-col" style="align-items: flex-end; text-align: right;">
+                    <span class="bp-city-code" id="bp-to-code">BOM</span>
+                    <span class="bp-city-time" id="bp-arr-time">08:15</span>
+                    <span style="font-size: 10px; color: #64748B;" id="bp-to-city">Mumbai (BOM T2)</span>
+                  </div>
+                </div>
+
+                <!-- Info Grid -->
+                <div class="bp-info-grid">
+                  <div class="bp-info-item">
+                    <label>Passenger</label>
+                    <strong id="bp-passenger-val">Hatke Traveler</strong>
+                  </div>
+                  <div class="bp-info-item">
+                    <label>Seat</label>
+                    <strong id="bp-seat-val" style="color: #0284C7;">12A (Window)</strong>
+                  </div>
+                  <div class="bp-info-item">
+                    <label>Gate & Terminal</label>
+                    <strong id="bp-gate-val">Terminal 3, Gate 14B</strong>
+                  </div>
+                  <div class="bp-info-item">
+                    <label>Class & Status</label>
+                    <strong style="color: #16A34A;" id="bp-status-val">Economy • Confirmed</strong>
+                  </div>
+                  <div class="bp-info-item" style="grid-column: span 2;">
+                    <label>Baggage Allowance</label>
+                    <strong id="bp-baggage-val">15 kg Check-in + 7 kg Cabin Handbag</strong>
+                  </div>
+                </div>
+
+                <!-- Perforated fold line -->
+                <div class="bp-perforated-divider"></div>
+
+                <!-- QR Barcode Row -->
+                <div class="boarding-pass-barcode-row">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=BOARDING_PASS_6E-BH83270" id="bp-barcode-img" class="bp-barcode-img" alt="QR Code">
+                  <div class="bp-security-badge">
+                    <span style="font-size: 13px; color: #0F172A;">Scan at Security Turnstile</span>
+                    <span>✓ Verified by DGCA Air Travel Grid</span>
+                    <span style="color: #64748B; font-size: 9px;" id="bp-booking-id">ID: BH-TRV-751976</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display: flex; gap: 8px;">
+              <button type="button" class="cab-advance-btn" style="flex: 1; background: #0284C7;" onclick="window.print()">
+                <span>🖨️ Print E-Ticket</span>
+              </button>
+              <button type="button" class="cab-advance-btn" style="flex: 1; background: #16A34A;" onclick="window.BH_APP.showToast('📥 Boarding Pass saved to your device Downloads!')">
+                <span>📥 Save PDF</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             MODAL 3: MY TRAVEL BOOKINGS DRAWER
+             ==================================================================== -->
+        <div class="flight-modal-overlay" id="travel-history-modal" style="display: none;" onclick="if(event.target === this) window.BH_FLIGHTS.closeTravelHistory()">
+          <div class="flight-modal-sheet" onclick="event.stopPropagation()">
+            <div class="flight-modal-header">
+              <div class="flight-modal-title">
+                <span>✈️</span>
+                <span>My Travel Bookings</span>
+              </div>
+              <button class="flight-modal-close" onclick="window.BH_FLIGHTS.closeTravelHistory()">✕</button>
+            </div>
+
+            <div id="travel-bookings-history-list" style="display: flex; flex-direction: column; gap: 10px; max-height: 400px; overflow-y: auto;">
+              <!-- Populated via API -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. VERIFIED DEALS TAB - EXACT 1:1 REPLICA (IMAGE 3) -->
+      <section class="app-view-tab" id="view-coupons" style="display: none;">
+        <div class="verified-deals-screen-wrap" id="coupons-view">
+
+          <!-- 1. HEADER (BACK BUTTON, VERIFIED DEALS SHIELD, SEARCH ICON) -->
+          <div class="deals-top-header">
+            <button class="deals-back-btn" onclick="window.BH_APP.switchTab('home')" title="Back to Home">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+
+            <div class="deals-header-title-box">
+              <img src="assets/icons/verified_shield.svg" alt="Verified" class="verified-shield-icon">
+              <h2 class="verified-title-text">Verified Deals</h2>
+            </div>
+
+            <button class="deals-search-circle-btn" onclick="window.BH_APP.switchTab('home')" title="Search Deals">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- 2. HORIZONTAL FILTER PILLS ROW -->
+          <div class="deals-filter-chips-scroll">
+            <!-- Filter button with sliders icon -->
+            <button class="deal-filter-chip filter-btn" id="btn-deals-filter-modal" onclick="window.BH_COUPONS.openFilterModal()">
+              <span>Filter</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="chip-svg">
+                <line x1="4" y1="21" x2="4" y2="14"></line>
+                <line x1="4" y1="10" x2="4" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="3"></line>
+                <line x1="20" y1="21" x2="20" y2="16"></line>
+                <line x1="20" y1="12" x2="20" y2="3"></line>
+                <line x1="1" y1="14" x2="7" y2="14"></line>
+                <line x1="9" y1="8" x2="15" y2="8"></line>
+                <line x1="17" y1="16" x2="23" y2="16"></line>
+              </svg>
+            </button>
+
+            <!-- New Deals Dropdown -->
+            <button class="deal-filter-chip active-dropdown" id="btn-deals-sort-dropdown" onclick="window.BH_COUPONS.toggleSortDropdown()">
+              <span>New Deals</span>
+              <span class="dropdown-chevron">⌄</span>
+            </button>
+
+            <!-- Category Pills -->
+            <button class="deal-filter-chip" data-category="Mobile Wall Chargers" onclick="window.BH_COUPONS.filterCategory('Mobile Wall Chargers')">
+              Mobile Wall Chargers
+            </button>
+
+            <button class="deal-filter-chip" data-category="Face Wash" onclick="window.BH_COUPONS.filterCategory('Face Wash')">
+              Face Wash
+            </button>
+
+            <button class="deal-filter-chip" data-category="Casual Shirts" onclick="window.BH_COUPONS.filterCategory('Casual Shirts')">
+              Casual Shirts
+            </button>
+
+            <button class="deal-filter-chip" data-category="Women Wear" onclick="window.BH_COUPONS.filterCategory('Women Wear')">
+              Women Wear
+            </button>
+
+            <button class="deal-filter-chip" data-category="Earbuds" onclick="window.BH_COUPONS.filterCategory('Earbuds')">
+              Earbuds
+            </button>
+          </div>
+
+          <!-- 3. VERIFIED DEALS 2-COLUMN GRID (EXACT SCREENSHOT LAYOUT) -->
+          <div class="verified-deals-2col-grid" id="verified-deals-grid-container">
+            <!-- Populated dynamically by js/coupons.js -->
+          </div>
+
+          <!-- Auto-Coupon Bot Banner / Drawer Toggle -->
+          <div class="deals-coupon-bot-strip" onclick="window.BH_COUPONS.toggleCouponTesterDrawer()">
+            <div class="bot-strip-left">
+              <span class="bot-emoji">🤖</span>
+              <div>
+                <div class="bot-strip-title">Buyhatke Auto-Coupon Tester</div>
+                <div class="bot-strip-sub">12 working influencer & bank promo codes ready</div>
+              </div>
+            </div>
+            <button class="bot-strip-run-btn" id="btn-run-coupon-bot">Test All ➔</button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 8. SPEND LENS TAB - EXACT 1:1 REPLICA (IMAGE 1) -->
+      <section class="app-view-tab" id="view-spend-lens" style="display: none;">
+        <div class="spend-lens-screen-wrapper" id="spend-lens-view">
+
+          <!-- Top Bar for Spend Lens -->
+          <div class="spend-lens-top-bar">
+            <h2 class="spend-lens-brand-title">Spend Lens</h2>
+            <div class="spend-lens-bh-logo">
+              <img src="assets/icons/buyhatke_white.svg" alt="Buyhatke" class="spend-lens-mascot">
+              <span class="bh-wordmark">buyhatke<span class="tm">™</span></span>
+            </div>
+          </div>
+
+          <!-- Spirograph Circular Wireframe Watermark Background -->
+          <div class="spirograph-watermark-bg">
+            <svg viewBox="0 0 400 300" class="spirograph-svg">
+              <circle cx="200" cy="80" r="140" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1" fill="none" />
+              <circle cx="200" cy="80" r="110" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1" fill="none" />
+              <circle cx="200" cy="80" r="80" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1" fill="none" />
+              <ellipse cx="200" cy="80" rx="160" ry="60" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1" fill="none" transform="rotate(15 200 80)" />
+              <ellipse cx="200" cy="80" rx="160" ry="60" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1" fill="none" transform="rotate(-15 200 80)" />
+              <ellipse cx="200" cy="80" rx="160" ry="60" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1" fill="none" transform="rotate(45 200 80)" />
+              <ellipse cx="200" cy="80" rx="160" ry="60" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1" fill="none" transform="rotate(-45 200 80)" />
+              <ellipse cx="200" cy="80" rx="160" ry="60" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1" fill="none" transform="rotate(75 200 80)" />
+              <ellipse cx="200" cy="80" rx="160" ry="60" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1" fill="none" transform="rotate(-75 200 80)" />
+            </svg>
+          </div>
+
+          <!-- Big Hero Headline -->
+          <div class="spend-lens-headline-wrap">
+            <h1 class="spend-lens-headline">
+              Track spendings<br>
+              across all your<br>
+              shopping apps in<br>
+              one place
+            </h1>
+          </div>
+
+          <!-- Primary Showcase Glassmorphic Card -->
+          <div class="spend-lens-glass-card" id="spend-lens-intro-card">
+            <div class="lens-feature-item">
+              <div class="lens-feature-icon-box">
+                <!-- Receipt with shopping cart outline in lime -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D2EFB2" stroke-width="1.8">
+                  <path d="M4 2v20l3-2 3 2 3-2 3 2 3-2 3 2V2l-3 2-3-2-3 2-3-2-3 2-3-2z"></path>
+                  <circle cx="10" cy="11" r="1.5"></circle>
+                  <circle cx="15" cy="11" r="1.5"></circle>
+                  <path d="M8 8h9l-1 5H9L8 8z"></path>
+                </svg>
+              </div>
+              <div class="lens-feature-text">
+                View all your spending across 100+ stores in one place
+              </div>
+            </div>
+
+            <div class="lens-feature-item">
+              <div class="lens-feature-icon-box">
+                <!-- Shopping cart with rising bar charts in lime -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D2EFB2" stroke-width="1.8">
+                  <circle cx="9" cy="20" r="1.5"></circle>
+                  <circle cx="18" cy="20" r="1.5"></circle>
+                  <path d="M3 4h3l2.5 11h10l2.5-8H6.5"></path>
+                  <line x1="10" y1="13" x2="10" y2="10"></line>
+                  <line x1="13" y1="13" x2="13" y2="8"></line>
+                  <line x1="16" y1="13" x2="16" y2="6"></line>
+                </svg>
+              </div>
+              <div class="lens-feature-text">
+                Get a breakdown of your top spending categories
+              </div>
+            </div>
+
+            <div class="lens-feature-item">
+              <div class="lens-feature-icon-box">
+                <!-- Price tag with magnifying glass in lime -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D2EFB2" stroke-width="1.8">
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                  <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                  <circle cx="15" cy="15" r="3"></circle>
+                  <line x1="17.2" y1="17.2" x2="19.5" y2="19.5"></line>
+                </svg>
+              </div>
+              <div class="lens-feature-text">
+                Identify where you may have overpaid and save more
+              </div>
+            </div>
+
+            <!-- Purple CTA Button -->
+            <button class="spend-lens-cta-btn" id="btn-connect-track-spend" onclick="window.BH_SPEND.handleConnectClick()">
+              Connect & Track Spend
+            </button>
+          </div>
+
+          <!-- Connected Analytics Section (Toggled on Connect or Tab Click) -->
+          <div class="spend-lens-analytics-section" id="spend-lens-analytics-wrap" style="display: none;">
+            <div class="lens-analytics-card">
+              <div class="lens-card-header">
+                <span class="lens-card-title">October 2026 Spend Matrix</span>
+                <span class="lens-status-live">● LIVE SYNC</span>
+              </div>
+              <div class="lens-stat-grid">
+                <div class="lens-stat-box">
+                  <span class="lens-stat-label">Total Spent</span>
+                  <span class="lens-stat-val">₹24,650</span>
+                </div>
+                <div class="lens-stat-box">
+                  <span class="lens-stat-label">Saved with Buyhatke</span>
+                  <span class="lens-stat-val saved">₹4,890 (19.8%)</span>
+                </div>
+              </div>
+              <div class="lens-stacked-bar">
+                <div class="bar-seg" style="width: 37%; background: #10B981;" title="Grocery 37%"></div>
+                <div class="bar-seg" style="width: 26%; background: #F59E0B;" title="Cabs 26%"></div>
+                <div class="bar-seg" style="width: 28%; background: #3B82F6;" title="Shopping 28%"></div>
+                <div class="bar-seg" style="width: 9%; background: #EC4899;" title="Food 9%"></div>
+              </div>
+            </div>
+
+            <div class="lens-sub-header">Top Spending Categories</div>
+            <div class="lens-categories-list" id="spend-categories-list"></div>
+
+            <div class="lens-sub-header" id="store-insights-heading">Store-by-Store Insights</div>
+            <div class="lens-stores-list" id="spend-stores-list"></div>
+          </div>
+
+          <!-- Dedicated Floating Spend Lens Bottom Bar (Exact 1:1 Replica Image 1) -->
+          <div class="spend-lens-bottom-bar-dock">
+            <div class="spend-lens-pill-nav">
+              <!-- 1. Back Button -->
+              <button class="spend-nav-item" id="spend-btn-back" onclick="window.BH_APP.switchTab('home')" title="Back to Home">
+                <div class="spend-nav-circle-back">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                </div>
+                <span>Back</span>
+              </button>
+
+              <!-- 2. Total Spend (Active Purple) -->
+              <button class="spend-nav-item active" id="spend-btn-total" onclick="window.BH_SPEND.showTotalSpend()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="spend-nav-icon">
+                  <rect x="3" y="12" width="4" height="8" rx="1"></rect>
+                  <rect x="10" y="8" width="4" height="12" rx="1"></rect>
+                  <rect x="17" y="4" width="4" height="16" rx="1"></rect>
+                </svg>
+                <span>Total Spend</span>
+              </button>
+
+              <!-- 3. Store Insights -->
+              <button class="spend-nav-item" id="spend-btn-stores" onclick="window.BH_SPEND.showStoreInsights()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spend-nav-icon">
+                  <circle cx="9" cy="20" r="1.5"></circle>
+                  <circle cx="18" cy="20" r="1.5"></circle>
+                  <path d="M3 4h3l2.5 11h10l2.5-8H6.5"></path>
+                  <line x1="12" y1="12" x2="12" y2="9"></line>
+                  <line x1="15" y1="12" x2="15" y2="7"></line>
+                </svg>
+                <span>Store Insights</span>
+              </button>
+
+              <!-- 4. Goodies with COMING SOON Badge -->
+              <button class="spend-nav-item goodies-item" id="spend-btn-goodies" onclick="window.BH_SPEND.showGoodiesModal()">
+                <div class="coming-soon-floating-tag">COMING SOON</div>
+                <div class="goodies-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spend-nav-icon">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <span class="notification-badge-red">1</span>
+                </div>
+                <span>Goodies</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 9. DEDICATED FLIPKART SHOPPING CONTAINER -->
+      <section class="app-view-tab" id="view-flipkart" style="display: none;">
+        <div class="flipkart-panel-container" id="flipkart-shopping-panel">
+          
+          <!-- Top Branded Header -->
+          <header class="flipkart-header">
+            <div class="flipkart-header-left">
+              <button class="flipkart-back-btn" onclick="window.BH_APP.switchTab('home')" title="Back to Home">◀</button>
+              <div class="flipkart-logo-badge">
+                <img src="assets/icons/flipkart.svg" alt="Flipkart">
+              </div>
+              <div class="flipkart-header-titles">
+                <span class="flipkart-title">Flipkart Shopping</span>
+                <span class="flipkart-subtitle">In-App Shopping Experience • Live Rail</span>
+              </div>
+            </div>
+            <div class="flipkart-header-right">
+              <button class="flipkart-refresh-btn" onclick="window.BH_FLIPKART.retryLoading()" title="Refresh & Retry Connection">
+                <span>🔄</span>
+                <span>Retry</span>
+              </button>
+            </div>
+          </header>
+
+          <!-- View Mode Switch Bar (In-App Deals vs Live Store) -->
+          <div class="flipkart-mode-switch-bar">
+            <button class="flipkart-mode-tab active" id="fk-tab-inapp" onclick="window.BH_FLIPKART.setMode('inapp')">
+              🛍️ In-App Shop
+            </button>
+            <button class="flipkart-mode-tab" id="fk-tab-live" onclick="window.BH_FLIPKART.setMode('live')">
+              🌐 Live Store
+            </button>
+          </div>
+
+          <!-- Content Area -->
+          <div class="flipkart-content-area" id="flipkart-main-content">
+            
+            <!-- Restriction Detection Banner -->
+            <div class="flipkart-restriction-banner" id="flipkart-restriction-banner" style="display: none;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 16px;">🔒</span>
+                <span id="flipkart-restriction-text">Flipkart blocks direct framing via X-Frame-Options. Using Native In-App Shopping.</span>
+              </div>
+              <span class="flipkart-restriction-badge">IN-APP ACTIVE</span>
+            </div>
+
+            <!-- Loading State -->
+            <div class="flipkart-loading-overlay" id="flipkart-loading-state" style="display: none;">
+              <div class="flipkart-spinner"></div>
+              <strong style="font-size: 14px; color: #0F172A;">Connecting to Flipkart...</strong>
+              <p style="font-size: 12px; color: #64748B; text-align: center; max-width: 280px;">
+                Checking embedding permissions and verifying live merchant session.
+              </p>
+            </div>
+
+            <!-- Direct Iframe Container (Full Height Responsive Frame) -->
+            <div class="flipkart-iframe-container" id="flipkart-iframe-container">
+              <div class="flipkart-live-strip">
+                <span>⚡ Live Flipkart Session (No login required)</span>
+                <a href="https://www.flipkart.com/offers-store" target="_blank" rel="noopener noreferrer" style="color: #2874F0; font-weight: 800; text-decoration: none;">
+                  Open in New Tab ↗
+                </a>
+              </div>
+              <iframe id="flipkart-direct-iframe" class="flipkart-direct-iframe" src="about:blank" title="Flipkart Embedded Frame" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            </div>
+
+            <!-- Native In-App Shopping Fallback View -->
+            <div class="flipkart-fallback-container" id="flipkart-fallback-container">
+              
+              <!-- Search Bar -->
+              <div class="flipkart-search-bar">
+                <input type="text" id="flipkart-search-input" class="flipkart-search-input" placeholder="Search Flipkart products (e.g. iPhone, Sony XM5, MacBook)...">
+                <button type="button" id="flipkart-search-btn" class="flipkart-search-btn">Search</button>
+              </div>
+
+              <!-- Quick Filter Chips -->
+              <div class="flipkart-chips-row">
+                <button class="flipkart-chip active" data-query="Apple iPhone 15">iPhone 15</button>
+                <button class="flipkart-chip" data-query="Sony WH-1000XM5">Sony XM5</button>
+                <button class="flipkart-chip" data-query="MacBook Air M2">MacBook Air</button>
+                <button class="flipkart-chip" data-query="AirPods Pro">AirPods Pro</button>
+                <button class="flipkart-chip" data-query="Smart Watch">Smart Watch</button>
+                <button class="flipkart-chip" data-query="Sneakers">Sneakers</button>
+              </div>
+
+              <!-- Coupon Banner -->
+              <div class="flipkart-coupon-banner">
+                <div class="flipkart-coupon-left">
+                  <span>🎟️</span>
+                  <div>
+                    <strong>Axis Bank Offer:</strong> Flat 5% Cashback
+                    <span class="flipkart-coupon-code">FLIPKART5</span>
+                  </div>
+                </div>
+                <button class="flipkart-btn-copy" onclick="window.BH_FLIPKART.copyCouponCode('FLIPKART5')">Copy</button>
+              </div>
+
+              <!-- Main Product Card -->
+              <div class="flipkart-product-card">
+                <div class="flipkart-card-header">
+                  <img id="fk-product-img" class="flipkart-product-img" src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?w=400&q=80" alt="Product Image">
+                  <div class="flipkart-product-info">
+                    <span class="flipkart-partner-badge">
+                      <span>✓</span> Flipkart Verified Listing
+                    </span>
+                    <h3 id="fk-product-title" class="flipkart-product-title">Apple iPhone 15 (128GB, Blue)</h3>
+                    <div class="flipkart-availability-tag">
+                      <span>●</span> In Stock • Delivery in 2 Days
+                    </div>
+                    <div class="flipkart-price-row">
+                      <span id="fk-product-price" class="flipkart-current-price">₹66,499</span>
+                      <span id="fk-product-mrp" class="flipkart-mrp-price">₹79,900</span>
+                      <span class="flipkart-discount-chip">17% OFF</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Buyhatke Deal Verdict -->
+                <div id="fk-product-verdict" class="flipkart-verdict-pill">
+                  🔥 Great Deal! ₹4,400 below 90-day average price
+                </div>
+
+                <!-- Retailer Comparison Matrix -->
+                <div class="flipkart-stores-matrix">
+                  <div class="flipkart-matrix-header">
+                    <span>Retailer Price Parity</span>
+                    <span>Live Quote</span>
+                  </div>
+                  <div id="fk-stores-matrix-rows" style="display: flex; flex-direction: column; gap: 6px;">
+                    <!-- Populated dynamically by js/flipkart.js -->
+                  </div>
+                </div>
+
+                <!-- Interactive Price-History Chart -->
+                <div class="flipkart-chart-wrapper">
+                  <div class="flipkart-chart-header">
+                    <span class="flipkart-chart-title">📈 90-Day Price Trend</span>
+                    <div class="flipkart-chart-stats">
+                      <span id="fk-stat-lowest" class="flipkart-stat-lowest">Lowest: ₹64,999</span>
+                      <span id="fk-stat-avg" class="flipkart-stat-avg">Avg: ₹70,399</span>
+                    </div>
+                  </div>
+                  <div class="flipkart-canvas-holder">
+                    <canvas id="flipkart-price-canvas"></canvas>
+                  </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flipkart-actions-grid">
+                  <button class="btn-fk-secondary" onclick="window.BH_FLIPKART.setPriceAlert()">
+                    <span>🔔</span>
+                    <span>Set Price Alert</span>
+                  </button>
+                  <a id="fk-external-affiliate-btn" class="btn-fk-primary" href="https://www.flipkart.com?affid=buyhatke" target="_blank" rel="noopener noreferrer">
+                    <span>View on Flipkart.com ↗</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Data Provider Footer Note -->
+              <div class="flipkart-provider-footer">
+                Powered by Buyhatke Authorized Product Adapter. External links open with verified affiliate tracking tags without navigating away from Buyhatke.
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- Floating Bottom Navigation Bar (5 Core Tabs - Image 2, 3, 4) -->
+    <nav class="bottom-nav-bar" id="main-floating-bottom-nav">
+      <!-- 1. Home -->
+      <button class="nav-tab-item active" data-tab="home" onclick="window.BH_APP.switchTab('home')">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        <span>Home</span>
+      </button>
+
+      <!-- 2. Deals -->
+      <button class="nav-tab-item" data-tab="coupons" onclick="window.BH_APP.switchTab('coupons')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+          <line x1="7" y1="7" x2="7.01" y2="7"></line>
+        </svg>
+        <span>Deals</span>
+      </button>
+
+      <!-- 3. Search -->
+      <button class="nav-tab-item" data-tab="search" onclick="window.BH_APP.handleSearchNavClick()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span>Search</span>
+      </button>
+
+      <!-- 4. Alerts -->
+      <button class="nav-tab-item" data-tab="alerts" onclick="window.BH_APP.openAlertsModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+        <span>Alerts</span>
+      </button>
+
+      <!-- 5. Profile -->
+      <button class="nav-tab-item" data-tab="profile" onclick="window.BH_AUTH.openAuthModal('phone')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Profile</span>
+      </button>
+    </nav>
+
+    <!-- Global Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Live In-App Browser (Super Browse) Modal -->
+    <div class="inapp-browser-modal" id="inapp-browser-modal">
+      <div class="browser-top-bar">
+        <div class="browser-controls-row">
+          <button class="browser-icon-btn" id="browser-back-btn" title="Back">◀</button>
+          <button class="browser-icon-btn" id="browser-reload-btn" title="Reload">🔄</button>
+          
+          <form class="browser-address-form" id="browser-url-form" onsubmit="event.preventDefault(); window.BH_BROWSER.navigateToInputUrl();">
+            <span class="lock-icon">🔒</span>
+            <input type="text" id="browser-url-input" class="browser-url-input" placeholder="Enter website URL (e.g. amazon.in, zepto.com)...">
+            <button type="submit" class="browser-go-btn">➔</button>
+          </form>
+          
+          <button class="browser-close-btn" id="browser-close-btn">Exit ✕</button>
+        </div>
+
+        <div class="browser-tabs-dock" id="browser-tabs-dock">
+          <div class="browser-tab-pill active" data-platform="zepto" data-url="https://www.zeptonow.com">
+            <img src="assets/icons/zepto.svg" alt="Zepto">
+            <span>Zepto</span>
+          </div>
+          <div class="browser-tab-pill" data-platform="blinkit" data-url="https://blinkit.com">
+            <img src="assets/icons/blinkit.svg" alt="Blinkit">
+            <span>Blinkit</span>
+          </div>
+          <div class="browser-tab-pill" data-platform="uber" data-url="https://m.uber.com">
+            <img src="assets/icons/uber.svg" alt="Uber">
+            <span>Uber Web</span>
+          </div>
+          <div class="browser-tab-pill" data-platform="amazon" data-url="https://www.amazon.in">
+            <img src="assets/icons/amazon.svg" alt="Amazon">
+            <span>Amazon</span>
+          </div>
+          <div class="browser-tab-pill" data-platform="flipkart" data-url="https://www.flipkart.com">
+            <img src="assets/icons/flipkart.svg" alt="Flipkart">
+            <span>Flipkart</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="browser-frame-container" id="browser-frame-container">
+        <iframe id="live-browser-iframe" class="browser-live-iframe" src="about:blank" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+      </div>
+
+      <div class="browser-smart-assistant-bar">
+        <div class="smart-bar-left">
+          <span>💡</span>
+          <span id="smart-bar-message">Buyhatke: Best deal active! Check coupons before checkout.</span>
+          <span class="smart-bar-savings-chip" id="smart-bar-savings-badge">BEST DEAL</span>
+        </div>
+        <div style="display:flex; gap:6px;">
+          <button class="smart-bar-action-btn" id="smart-bar-open-ext-btn">Open Live Tab ↗</button>
+          <button class="smart-bar-action-btn" id="smart-bar-coupon-btn">Auto-Coupons</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Official Buyhatke Authentication & Real OTP Modal -->
+    <div class="auth-modal-wrapper" id="auth-modal">
+      <div class="auth-card-body">
+        <button class="auth-close-btn" id="auth-modal-close-btn">✕</button>
+
+        <div class="auth-brand-center">
+          <img src="assets/icons/buyhatke.svg" alt="Buyhatke" class="auth-brand-logo">
+          <h3 class="auth-heading" id="auth-title">Login or Sign Up</h3>
+          <p class="auth-sub" id="auth-subtitle">Verify with real OTP to sync Zepto, Blinkit & Uber</p>
+        </div>
+
+        <!-- STEP 1: Phone Number Input -->
+        <div id="auth-step-phone" style="display: flex; flex-direction: column; gap: 12px;">
+          <div class="phone-input-row">
+            <div class="phone-prefix">
+              <span class="phone-flag">🇮🇳</span>
+              <span>+91</span>
+            </div>
+            <input type="tel" id="auth-phone-input" class="phone-field-input" placeholder="Enter 10-digit mobile number" maxlength="10" autocomplete="tel">
+          </div>
+
+          <button class="auth-submit-btn" id="btn-request-otp">
+            <span>Get OTP Verification Code ➔</span>
+          </button>
+
+          <!-- Optional Cellular SMS Gateway Config -->
+          <div class="sms-gateway-box">
+            <div class="sms-gateway-title">
+              <span>📡 Cellular SMS Delivery</span>
+              <span style="font-size: 10px; color: var(--bh-primary); cursor: pointer;" onclick="document.getElementById('sms-api-panel').style.display = document.getElementById('sms-api-panel').style.display === 'none' ? 'flex' : 'none';">Configure Key ⚙️</span>
+            </div>
+            <div id="sms-api-panel" style="display: none; flex-direction: column; gap: 6px; margin-top: 4px;">
+              <input type="text" id="sms-api-key-input" class="sms-gateway-input" placeholder="Paste Fast2SMS or 2Factor API Key here...">
+              <button type="button" class="auth-submit-btn" style="height: 28px; font-size: 10px; background: #008357;" onclick="window.BH_AUTH.saveSmsGatewayKey()">Save Gateway Key</button>
+              <span style="font-size: 9px; color: var(--text-muted);">When key is saved, OTP is dispatched directly as a real cellular SMS to your phone SIM.</span>
+            </div>
+          </div>
+
+          <p style="font-size: 10px; color: var(--text-dim); text-align: center;">
+            By continuing, you agree to Buyhatke's Terms of Service & Privacy Policy.
+          </p>
+        </div>
+
+        <!-- STEP 2: 6-Digit Real OTP -->
+        <div id="auth-step-otp" style="display: none; flex-direction: column; gap: 14px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-secondary);">
+            <span>Enter 6-digit code sent to <strong id="otp-sent-phone" style="color: var(--text-primary);">+91 9876543210</strong></span>
+            <button id="btn-change-phone" style="background:none; border:none; color:var(--bh-primary); cursor:pointer; font-weight:700;">Edit</button>
+          </div>
+
+          <div class="otp-inputs-grid" id="otp-inputs-container">
+            <input type="tel" class="otp-digit-field" maxlength="1" data-index="0" autofocus>
+            <input type="tel" class="otp-digit-field" maxlength="1" data-index="1">
+            <input type="tel" class="otp-digit-field" maxlength="1" data-index="2">
+            <input type="tel" class="otp-digit-field" maxlength="1" data-index="3">
+            <input type="tel" class="otp-digit-field" maxlength="1" data-index="4">
+            <input type="tel" class="otp-digit-field" maxlength="1" data-index="5">
+          </div>
+
+          <div class="resend-otp-row">
+            <span id="resend-timer-text">Resend code in 30s</span>
+            <button class="resend-btn" id="btn-resend-otp" disabled>Resend OTP</button>
+          </div>
+
+          <button class="auth-submit-btn" id="btn-verify-otp">
+            <span>Verify & Login ➔</span>
+          </button>
+
+          <div style="font-size: 11px; color: #008357; text-align: center; background: #E8F8F0; padding: 6px; border-radius: 8px; border: 1px dashed rgba(0, 131, 87, 0.3);">
+            💬 Tip: Check incoming notification banner or terminal console for your OTP code!
+          </div>
+        </div>
+
+        <!-- STEP 3: Profile Details -->
+        <div id="auth-step-profile" style="display: none; flex-direction: column; gap: 14px;">
+          <div style="background: var(--bh-bg-soft); border: 1px solid var(--border-card); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="color: var(--text-primary); font-size: 15px;" id="profile-name">Hatke Shopper</strong>
+              <span class="badge-cheapest">ACTIVE MEMBER</span>
+            </div>
+            <div style="font-size: 12px; color: var(--text-secondary);" id="profile-phone">+91 98765 43210</div>
+            <div style="display: flex; gap: 12px; margin-top: 4px; padding-top: 6px; border-top: 1px solid var(--border-card);">
+              <div>
+                <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Hatke Coins</div>
+                <strong style="color: #B45309; font-size: 14px;" id="profile-coins">350 🪙</strong>
+              </div>
+              <div>
+                <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Total Saved</div>
+                <strong style="color: var(--bh-green); font-size: 14px;" id="profile-savings">₹4,890</strong>
+              </div>
+            </div>
+          </div>
+
+          <button class="auth-submit-btn" id="btn-logout" style="background: #FEE2E2; color: #DC2626; border: 1px solid #FCA5A5; box-shadow: none;">
+            Log Out
+          </button>
+        </div>
+      </div>
+    <!-- Price Drop Alerts Modal -->
+    <div class="auth-modal-overlay" id="alerts-modal" style="display: none;" onclick="if(event.target === this) window.BH_APP.closeAlertsModal()">
+      <div class="auth-modal-card">
+        <div class="auth-modal-header">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:20px;">🔔</span>
+            <h3 style="font-size:16px; font-weight:800; color:var(--text-primary);">Price Drop Alerts</h3>
+          </div>
+          <button class="auth-close-btn" onclick="window.BH_APP.closeAlertsModal()">✕</button>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px; max-height:400px; overflow-y:auto; padding:4px 0;">
+          <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:12px; display:flex; gap:10px; align-items:center;">
+            <img src="assets/icons/myntra.svg" style="width:36px; height:36px; border-radius:8px;">
+            <div style="flex:1;">
+              <strong style="font-size:13px; color:#0F172A;">CareDone Crop Top & Skirt</strong>
+              <div style="font-size:11px; color:#16A34A; font-weight:700;">Price dropped to ₹361 (7% OFF)!</div>
+            </div>
+            <button onclick="window.BH_APP.openInAppBrowser('myntra'); window.BH_APP.closeAlertsModal();" style="background:#5855E5; color:#fff; border:none; border-radius:8px; padding:6px 10px; font-size:11px; font-weight:700; cursor:pointer;">Buy</button>
+          </div>
+          <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:12px; display:flex; gap:10px; align-items:center;">
+            <img src="assets/icons/amazon.svg" style="width:36px; height:36px; border-radius:8px;">
+            <div style="flex:1;">
+              <strong style="font-size:13px; color:#0F172A;">Sony WH-1000XM5 ANC</strong>
+              <div style="font-size:11px; color:#16A34A; font-weight:700;">All-Time Low ₹23,990 (Save ₹3,200)</div>
+            </div>
+            <button onclick="window.BH_APP.openInAppBrowser('amazon'); window.BH_APP.closeAlertsModal();" style="background:#5855E5; color:#fff; border:none; border-radius:8px; padding:6px 10px; font-size:11px; font-weight:700; cursor:pointer;">Buy</button>
+          </div>
+          <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:12px; display:flex; gap:10px; align-items:center;">
+            <img src="assets/icons/zepto.svg" style="width:36px; height:36px; border-radius:8px;">
+            <div style="flex:1;">
+              <strong style="font-size:13px; color:#0F172A;">Amul Taaza Milk (500ml)</strong>
+              <div style="font-size:11px; color:#008357; font-weight:700;">₹1 cheaper than Blinkit on Zepto (₹26)</div>
+            </div>
+            <button onclick="window.BH_APP.openInAppBrowser('zepto'); window.BH_APP.closeAlertsModal();" style="background:#5855E5; color:#fff; border:none; border-radius:8px; padding:6px 10px; font-size:11px; font-weight:700; cursor:pointer;">Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modular Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/grocery.js"></script>
+  <script src="js/cabs.js"></script>
+  <script src="js/flights.js"></script>
+  <script src="js/shopping.js"></script>
+  <script src="js/inapp-browser.js"></script>
+  <script src="js/coupons.js"></script>
+  <script src="js/spend-lens.js"></script>
+  <script src="js/flipkart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="shield_g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded shield -->
+  <path d="M50 14L22 24V48C22 68 34 84 50 88C66 84 78 68 78 48V24L50 14Z" fill="url(#shield_g)"/>
+  <!-- White b inside -->
+  <path d="M40 32V68H52C58 68 63 64 63 56C63 49 58 45 52 45H47V32H40ZM47 52H52C54.5 52 56.5 53.5 56.5 56C56.5 58.5 54.5 60 52 60H47V52Z" fill="#FFFFFF"/>
+</svg>

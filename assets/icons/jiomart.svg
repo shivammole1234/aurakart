@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="22" fill="#E11D2A"/>
+  <!-- White shopping bag with handles -->
+  <path d="M28 42H72L67 76H33L28 42Z" fill="#FFFFFF"/>
+  <path d="M40 42V32C40 26.5 44.5 22 50 22C55.5 22 60 26.5 60 32V42" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" fill="none"/>
+</svg>

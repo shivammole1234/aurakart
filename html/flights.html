@@ -1,0 +1,48 @@
+<!-- BUYHATKE FLIGHTS COMPARISON TAB -->
+<div class="flights-container" id="flights-view">
+  <!-- Search Card -->
+  <div class="flight-search-card">
+    <div class="flight-cities-row">
+      <div class="city-select-box" id="flight-from-box">
+        <span class="city-label">From</span>
+        <span class="city-code" id="flight-from-code">DEL</span>
+        <span class="city-name" id="flight-from-name">New Delhi</span>
+      </div>
+
+      <button class="flight-swap-btn" id="swap-flight-cities-btn" title="Swap cities">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+        </svg>
+      </button>
+
+      <div class="city-select-box" id="flight-to-box">
+        <span class="city-label">To</span>
+        <span class="city-code" id="flight-to-code">BOM</span>
+        <span class="city-name" id="flight-to-name">Mumbai</span>
+      </div>
+    </div>
+
+    <div class="flight-date-class-row">
+      <div class="info-field-box">
+        <label>Departure Date</label>
+        <div class="info-field-val">Tomorrow, 6 Oct</div>
+      </div>
+      <div class="info-field-box">
+        <label>Travellers & Class</label>
+        <div class="info-field-val">1 Adult, Economy</div>
+      </div>
+    </div>
+
+    <!-- Sector Presets -->
+    <div class="flight-sector-pills" id="flight-sector-pills">
+      <div class="flight-sector-pill active" data-sector="DEL-BOM">DEL ✈ BOM</div>
+      <div class="flight-sector-pill" data-sector="BLR-DEL">BLR ✈ DEL</div>
+      <div class="flight-sector-pill" data-sector="BOM-GOI">BOM ✈ GOI</div>
+    </div>
+  </div>
+
+  <!-- Flight Ticket Results -->
+  <div class="flights-ticket-list" id="flights-list-container">
+    <!-- Populated dynamically by js/flights.js -->
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <rect width="100" height="100" rx="22" fill="#FFFFFF"/>
+    <path d="M25 65L40 35L50 55L60 35L75 65H64L55 47L50 57L45 47L36 65H25Z" fill="url(#myntra_g)"/>
+    <defs>
+      <linearGradient id="myntra_g" x1="25" y1="35" x2="75" y2="65" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FF3F6C"/>
+        <stop offset="0.5" stop-color="#FF527B"/>
+        <stop offset="1" stop-color="#F28B00"/>
+      </linearGradient>
+    </defs>
+  </svg>

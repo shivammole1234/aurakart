@@ -1,0 +1,669 @@
+/* ==========================================================================
+   BUYHATKE — DEDICATED FLIPKART SHOPPING CONTAINER (FLIPKART.CSS)
+   ========================================================================== */
+
+#view-flipkart {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.flipkart-panel-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  background: var(--bh-bg-soft, #F8FAFC);
+  font-family: var(--font-main, -apple-system, BlinkMacSystemFont, sans-serif);
+  overflow: hidden;
+}
+
+/* 1. Header Bar */
+.flipkart-header {
+  background: linear-gradient(135deg, #2874F0 0%, #1A56B8 100%);
+  color: #FFFFFF;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(40, 116, 240, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.flipkart-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flipkart-back-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #FFFFFF;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.15s ease;
+}
+
+.flipkart-back-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.flipkart-logo-badge {
+  width: 34px;
+  height: 34px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.flipkart-logo-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.flipkart-header-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.flipkart-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.flipkart-subtitle {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+.flipkart-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flipkart-refresh-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #FFFFFF;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.15s ease;
+}
+
+.flipkart-refresh-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Mode Switch Bar (In-App Deals vs Live Store) */
+.flipkart-mode-switch-bar {
+  display: flex;
+  background: #1A56B8;
+  padding: 6px 12px;
+  gap: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 15;
+}
+
+.flipkart-mode-tab {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.85);
+  border: none;
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.flipkart-mode-tab:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+.flipkart-mode-tab.active {
+  background: #FFFFFF;
+  color: #2874F0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+/* 2. Responsive Content Area */
+.flipkart-content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-y: auto;
+  height: 100%;
+  padding-bottom: 80px;
+}
+
+.flipkart-content-area.iframe-mode {
+  overflow: hidden;
+  padding-bottom: 75px;
+}
+
+/* Restriction Notice Banner */
+.flipkart-restriction-banner {
+  background: #EFF6FF;
+  border-bottom: 1px solid #BFDBFE;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: #1E40AF;
+  line-height: 1.4;
+}
+
+.flipkart-restriction-badge {
+  background: #DBEAFE;
+  color: #1E40AF;
+  font-weight: 700;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+/* Iframe Frame (Full Window Responsive Container) */
+.flipkart-iframe-container {
+  width: 100%;
+  flex: 1;
+  height: 100%;
+  min-height: 0;
+  background: #FFFFFF;
+  position: relative;
+  display: none;
+}
+
+.flipkart-iframe-container.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.flipkart-live-strip {
+  background: #FFFBEB;
+  border-bottom: 1px solid #FDE68A;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #92400E;
+}
+
+.flipkart-direct-iframe {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  border: none;
+  background: #FFFFFF;
+}
+
+/* Loading Overlay */
+.flipkart-loading-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 12px;
+  color: var(--text-secondary, #475569);
+  background: #FFFFFF;
+  border-radius: 12px;
+  margin: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.flipkart-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3.5px solid #E2E8F0;
+  border-top-color: #2874F0;
+  border-radius: 50%;
+  animation: fkSpin 0.8s linear infinite;
+}
+
+@keyframes fkSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* 3. In-App Shopping Fallback Experience */
+.flipkart-fallback-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px;
+}
+
+/* Search Box */
+.flipkart-search-bar {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 0 12px;
+  height: 44px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  transition: border-color 0.15s ease;
+}
+
+.flipkart-search-bar:focus-within {
+  border-color: #2874F0;
+}
+
+.flipkart-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  font-family: inherit;
+  color: #0F172A;
+}
+
+.flipkart-search-btn {
+  background: #2874F0;
+  color: #FFFFFF;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.flipkart-search-btn:hover {
+  background: #1A56B8;
+}
+
+/* Category Quick Filter Chips */
+.flipkart-chips-row {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+
+.flipkart-chips-row::-webkit-scrollbar {
+  display: none;
+}
+
+.flipkart-chip {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.flipkart-chip.active,
+.flipkart-chip:hover {
+  background: #EFF6FF;
+  border-color: #2874F0;
+  color: #2874F0;
+}
+
+/* Main Featured Product Card */
+.flipkart-product-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.flipkart-card-header {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.flipkart-product-img {
+  width: 88px;
+  height: 88px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: #F8FAFC;
+  padding: 6px;
+  border: 1px solid #F1F5F9;
+  flex-shrink: 0;
+}
+
+.flipkart-product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.flipkart-partner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #2874F0;
+  text-transform: uppercase;
+}
+
+.flipkart-product-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.35;
+}
+
+.flipkart-availability-tag {
+  font-size: 11px;
+  color: #059669;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.flipkart-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.flipkart-current-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.flipkart-mrp-price {
+  font-size: 12px;
+  color: #94A3B8;
+  text-decoration: line-through;
+}
+
+.flipkart-discount-chip {
+  background: #ECFDF5;
+  color: #047857;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+/* Buyhatke Deal Verdict Pill */
+.flipkart-verdict-pill {
+  background: #FFF7ED;
+  border: 1px solid #FFEDD5;
+  color: #C2410C;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Retailer Price Comparison Matrix */
+.flipkart-stores-matrix {
+  border-top: 1px solid #F1F5F9;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.flipkart-matrix-header {
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flipkart-store-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.flipkart-store-row.highlighted {
+  background: #EFF6FF;
+  border-color: #93C5FD;
+}
+
+.flipkart-store-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flipkart-store-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.flipkart-store-name {
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.flipkart-store-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flipkart-store-price {
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.flipkart-cheapest-badge {
+  background: #059669;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* Price History Graph Container */
+.flipkart-chart-wrapper {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.flipkart-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flipkart-chart-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.flipkart-chart-stats {
+  display: flex;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.flipkart-stat-lowest { color: #059669; }
+.flipkart-stat-avg { color: #475569; }
+
+.flipkart-canvas-holder {
+  width: 100%;
+  height: 120px;
+  position: relative;
+}
+
+#flipkart-price-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Action Controls (Price Alert & External Link) */
+.flipkart-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.btn-fk-secondary {
+  background: #F1F5F9;
+  color: #1E293B;
+  border: 1px solid #CBD5E1;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.btn-fk-secondary:hover {
+  background: #E2E8F0;
+}
+
+.btn-fk-primary {
+  background: #2874F0;
+  color: #FFFFFF;
+  border: none;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(40, 116, 240, 0.3);
+  transition: background 0.15s ease;
+}
+
+.btn-fk-primary:hover {
+  background: #1A56B8;
+}
+
+/* Coupon Banner */
+.flipkart-coupon-banner {
+  background: #FEF3C7;
+  border: 1px dashed #F59E0B;
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.flipkart-coupon-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flipkart-coupon-code {
+  font-family: monospace;
+  font-weight: 800;
+  color: #92400E;
+}
+
+.flipkart-btn-copy {
+  background: #D97706;
+  color: #FFFFFF;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Data Provider Notice Tag */
+.flipkart-provider-footer {
+  text-align: center;
+  font-size: 10px;
+  color: #94A3B8;
+  padding: 10px 0;
+  line-height: 1.4;
+}
+
+/* Mobile & Desktop Responsive Constraints */
+@media (max-width: 600px) {
+  .flipkart-actions-grid {
+    grid-template-columns: 1fr;
+  }
+}

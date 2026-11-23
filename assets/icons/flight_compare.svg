@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Flight Boarding Pass Ticket -->
+  <g transform="translate(14, 18)">
+    <rect x="0" y="8" width="70" height="46" rx="8" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="2"/>
+    <rect x="0" y="8" width="70" height="12" rx="6" fill="#EF4444"/>
+    <circle cx="2" cy="30" r="4" fill="#FFFFFF"/>
+    <circle cx="68" cy="30" r="4" fill="#FFFFFF"/>
+    <line x1="8" y1="30" x2="62" y2="30" stroke="#CBD5E1" stroke-dasharray="4 3" stroke-width="2"/>
+    <!-- barcode lines -->
+    <rect x="8" y="38" width="3" height="10" fill="#64748B"/>
+    <rect x="14" y="38" width="5" height="10" fill="#64748B"/>
+    <rect x="22" y="38" width="2" height="10" fill="#64748B"/>
+    <rect x="27" y="38" width="4" height="10" fill="#64748B"/>
+    
+    <!-- Airplane flying in front -->
+    <g transform="translate(25, 6) rotate(-15)">
+      <ellipse cx="25" cy="25" rx="28" ry="8" fill="#38BDF8"/>
+      <path d="M12 25L-4 12H4L20 22" fill="#0284C7"/>
+      <path d="M12 25L-4 38H4L20 28" fill="#0284C7"/>
+      <path d="M-2 25L-12 10H-6L3 25" fill="#0369A1"/>
+      <ellipse cx="48" cy="25" rx="5" ry="4" fill="#BAE6FD"/>
+    </g>
+  </g>
+</svg>

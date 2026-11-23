@@ -1,0 +1,102 @@
+<!-- OFFICIAL BUYHATKE IN-APP BROWSER (SUPER BROWSE) TAB -->
+<div class="inapp-browser-container" id="inapp-browser-view">
+  <!-- Vault Status Card -->
+  <div class="vault-status-card">
+    <div class="vault-header-row">
+      <div class="vault-title">
+        <span>🔐 In-App Browser & Account Vault</span>
+      </div>
+      <span class="vault-badge">6 / 8 CONNECTED</span>
+    </div>
+    <p class="vault-desc">
+      Super Browse lets you browse products and book rides across all your linked accounts without switching apps. Compare carts in real time and checkout directly in one tap.
+    </p>
+    <div class="vault-stats-grid">
+      <div class="vault-stat-col">
+        <span class="vault-stat-label">Active Sessions</span>
+        <span class="vault-stat-num" id="stat-active-sessions">6 Apps</span>
+      </div>
+      <div class="vault-stat-col">
+        <span class="vault-stat-label">Cart Synced</span>
+        <span class="vault-stat-num" id="stat-synced-items">5 Items</span>
+      </div>
+      <div class="vault-stat-col">
+        <span class="vault-stat-label">Time Saved</span>
+        <span class="vault-stat-num">4.5 Hrs</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Connected Apps Grid -->
+  <div class="section-header-row">
+    <h4 class="section-title">📱 Your Connected Platforms</h4>
+    <span class="section-see-all" id="btn-sync-all-accounts">Sync All 🔄</span>
+  </div>
+
+  <div class="linked-platforms-grid" id="linked-platforms-grid">
+    <!-- Populated dynamically by js/inapp-browser.js -->
+  </div>
+</div>
+
+<!-- ========================================================================
+     FUNCTIONAL IN-APP BROWSER (SUPER BROWSE) MODAL
+     ======================================================================== -->
+<div class="inapp-browser-modal" id="inapp-browser-modal">
+  <!-- Top Address Bar & Nav Controls -->
+  <div class="browser-top-bar">
+    <div class="browser-controls-row">
+      <button class="browser-icon-btn" id="browser-back-btn" title="Back">◀</button>
+      <button class="browser-icon-btn" id="browser-reload-btn" title="Reload">🔄</button>
+      
+      <form class="browser-address-form" id="browser-url-form" onsubmit="event.preventDefault(); window.BH_BROWSER.navigateToInputUrl();">
+        <span class="lock-icon">🔒</span>
+        <input type="text" id="browser-url-input" class="browser-url-input" placeholder="Enter website URL (e.g. amazon.in, zepto.com)...">
+        <button type="submit" class="browser-go-btn">➔</button>
+      </form>
+      
+      <button class="browser-close-btn" id="browser-close-btn">Exit ✕</button>
+    </div>
+
+    <!-- Active Multi-Tab Switcher Dock -->
+    <div class="browser-tabs-dock" id="browser-tabs-dock">
+      <div class="browser-tab-pill active" data-platform="zepto" data-url="https://www.zeptonow.com">
+        <img src="assets/icons/zepto.svg" alt="Zepto">
+        <span>Zepto</span>
+      </div>
+      <div class="browser-tab-pill" data-platform="blinkit" data-url="https://blinkit.com">
+        <img src="assets/icons/blinkit.svg" alt="Blinkit">
+        <span>Blinkit</span>
+      </div>
+      <div class="browser-tab-pill" data-platform="uber" data-url="https://m.uber.com">
+        <img src="assets/icons/uber.svg" alt="Uber">
+        <span>Uber Web</span>
+      </div>
+      <div class="browser-tab-pill" data-platform="amazon" data-url="https://www.amazon.in">
+        <img src="assets/icons/amazon.svg" alt="Amazon">
+        <span>Amazon</span>
+      </div>
+      <div class="browser-tab-pill" data-platform="flipkart" data-url="https://www.flipkart.com">
+        <img src="assets/icons/flipkart.svg" alt="Flipkart">
+        <span>Flipkart</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Frame Viewport -->
+  <div class="browser-frame-container" id="browser-frame-container">
+    <iframe id="live-browser-iframe" class="browser-live-iframe" src="about:blank" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+  </div>
+
+  <!-- Buyhatke Floating Smart Bar Overlay -->
+  <div class="browser-smart-assistant-bar">
+    <div class="smart-bar-left">
+      <span>💡</span>
+      <span id="smart-bar-message">Buyhatke: Best deal active! Check coupons before checkout.</span>
+      <span class="smart-bar-savings-chip" id="smart-bar-savings-badge">BEST DEAL</span>
+    </div>
+    <div style="display:flex; gap:6px;">
+      <button class="smart-bar-action-btn" id="smart-bar-open-ext-btn">Open Live Tab ↗</button>
+      <button class="smart-bar-action-btn" id="smart-bar-coupon-btn">Auto-Coupons</button>
+    </div>
+  </div>
+</div>

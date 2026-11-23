@@ -1,0 +1,695 @@
+/* ==========================================================================
+   OFFICIAL BUYHATKE CAB WARS - CABS.CSS
+   ========================================================================== */
+
+.cabs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px 14px 20px;
+}
+
+/* Cab Wars Hero Banner */
+.cab-wars-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cab-wars-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.smart-pickup-banner {
+  background: var(--bh-green-light);
+  border: 1px solid rgba(0, 131, 87, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--bh-green);
+  font-weight: 600;
+}
+
+/* Route Input Card */
+.cab-route-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+}
+
+.route-inputs-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.route-dots-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.dot-pickup {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bh-green);
+}
+.line-dashed {
+  width: 2px;
+  height: 30px;
+  border-left: 2px dashed var(--border-subtle);
+}
+.dot-drop {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--bh-red);
+}
+
+.route-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.route-input-field {
+  width: 100%;
+  height: 36px;
+  background: var(--bh-bg-soft);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  padding: 0 10px;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--text-primary);
+  outline: none;
+}
+.route-input-field:focus {
+  border-color: var(--bh-primary);
+  background: #fff;
+}
+
+.swap-route-btn {
+  background: var(--bh-bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.swap-route-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Route Presets */
+.route-presets-row {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.route-presets-row::-webkit-scrollbar {
+  display: none;
+}
+.route-preset-chip {
+  padding: 4px 10px;
+  background: var(--bh-bg-soft);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.route-preset-chip.active {
+  background: var(--bh-primary);
+  color: #fff;
+  border-color: var(--bh-primary);
+}
+
+/* Route Meta Stats */
+.route-meta-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 6px;
+  border-top: 1px solid var(--border-card);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.route-meta-stat-item strong {
+  color: var(--text-primary);
+}
+
+/* Vehicle Category Filters */
+.cab-vehicle-filters {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cab-vehicle-filters::-webkit-scrollbar {
+  display: none;
+}
+.vehicle-filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.vehicle-filter-btn.active {
+  background: var(--bh-primary);
+  color: #FFFFFF;
+  border-color: var(--bh-primary);
+}
+
+/* Rides List */
+.cabs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ride-option-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.15s;
+}
+.ride-option-card:hover {
+  border-color: var(--bh-primary-border);
+}
+.ride-option-card.cheapest-in-category {
+  border-color: rgba(0, 131, 87, 0.4);
+  background: linear-gradient(180deg, #FAFCFA 0%, #FFFFFF 100%);
+}
+
+.ride-card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.provider-logo-badge {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--bh-bg-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid var(--border-card);
+}
+.provider-logo-badge img {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+}
+.vehicle-type-emoji {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  font-size: 12px;
+}
+
+.ride-meta-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ride-title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ride-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.ride-details-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.eta-tag {
+  color: var(--bh-green);
+  font-weight: 700;
+}
+
+.ride-card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+.ride-fare-amount {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+.ride-book-btn {
+  background: var(--bh-primary);
+  color: #FFFFFF;
+  border: none;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: transform 0.15s, background 0.15s;
+}
+.ride-book-btn:hover {
+  transform: translateY(-1px);
+  background: #4743D6;
+}
+
+/* Header Action Button for My Rides */
+.cab-rides-btn {
+  background: rgba(88, 85, 229, 0.1);
+  color: var(--bh-primary);
+  border: 1px solid rgba(88, 85, 229, 0.25);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
+}
+.cab-rides-btn:hover {
+  background: var(--bh-primary);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   IN-APP CAB BOOKING, LIVE TRACKER & RIDES HISTORY MODALS
+   ========================================================================== */
+.cab-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: cabFadeIn 0.2s ease;
+}
+
+@keyframes cabFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cabSlideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.cab-modal-sheet {
+  background: #FFFFFF;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: cabSlideUp 0.25s ease;
+}
+
+.cab-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.cab-modal-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cab-modal-close {
+  background: #F1F5F9;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748B;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+.cab-modal-close:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+/* Driver Info Card */
+.driver-info-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.driver-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.driver-avatar-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #EEF2FF;
+  border: 2px solid #5855E5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.driver-name-text {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0F172A;
+}
+.driver-rating-badge {
+  font-size: 11px;
+  color: #D97706;
+  font-weight: 700;
+}
+.driver-vehicle-text {
+  font-size: 11.5px;
+  color: #475569;
+  font-weight: 600;
+}
+.driver-plate-pill {
+  display: inline-block;
+  background: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FCD34D;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+.driver-call-btn {
+  background: #E8F8F0;
+  color: #008357;
+  border: 1px solid rgba(0, 131, 87, 0.3);
+  border-radius: 20px;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s;
+}
+.driver-call-btn:hover {
+  background: #008357;
+  color: #FFFFFF;
+}
+
+/* Highlighted Start Ride OTP Banner */
+.cab-otp-box {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 2px dashed #F59E0B;
+  border-radius: 14px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 3px;
+}
+.cab-otp-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: #92400E;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.cab-otp-digits {
+  font-size: 32px;
+  font-weight: 900;
+  color: #78350F;
+  letter-spacing: 6px;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+}
+.cab-otp-hint {
+  font-size: 11px;
+  color: #B45309;
+  font-weight: 600;
+}
+
+/* Route Info Mini Strip */
+.cab-route-strip {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cab-strip-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: #334155;
+}
+.cab-strip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cab-strip-dot.green { background: #16A34A; }
+.cab-strip-dot.red { background: #DC2626; border-radius: 2px; }
+
+/* Ride Stages Timeline */
+.cab-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 6px;
+}
+.cab-stage-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+}
+.cab-stage-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 24px;
+  bottom: -10px;
+  width: 2px;
+  background: #E2E8F0;
+}
+.cab-stage-step.done:not(:last-child)::after {
+  background: #16A34A;
+}
+.cab-step-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #F1F5F9;
+  border: 2px solid #CBD5E1;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.cab-stage-step.done .cab-step-icon {
+  background: #16A34A;
+  border-color: #16A34A;
+  color: #FFFFFF;
+}
+.cab-stage-step.current .cab-step-icon {
+  background: #5855E5;
+  border-color: #5855E5;
+  color: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(88, 85, 229, 0.2);
+  animation: cabPulse 1.5s infinite;
+}
+@keyframes cabPulse {
+  0% { box-shadow: 0 0 0 0 rgba(88, 85, 229, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(88, 85, 229, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(88, 85, 229, 0); }
+}
+.cab-step-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.cab-step-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #0F172A;
+}
+.cab-step-desc {
+  font-size: 11px;
+  color: #64748B;
+}
+
+/* Advance Demo Button */
+.cab-advance-btn {
+  background: linear-gradient(135deg, #5855E5 0%, #4338CA 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: opacity 0.15s;
+}
+.cab-advance-btn:hover {
+  opacity: 0.95;
+}
+
+/* Driver Rating Card */
+.cab-rating-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+}
+.cab-stars-row {
+  display: flex;
+  gap: 6px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.cab-star-icon {
+  color: #CBD5E1;
+  transition: color 0.15s;
+}
+.cab-star-icon.active {
+  color: #F59E0B;
+}
+.cab-tip-chips {
+  display: flex;
+  gap: 6px;
+}
+.cab-tip-chip {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 16px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.cab-tip-chip.active {
+  background: #5855E5;
+  color: #FFFFFF;
+  border-color: #5855E5;
+}
+
+/* History List Item */
+.cab-history-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+}
+.cab-history-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cab-history-fare {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0F172A;
+}
+.cab-history-route {
+  font-size: 11.5px;
+  color: #475569;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}

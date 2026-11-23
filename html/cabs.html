@@ -1,0 +1,73 @@
+<!-- OFFICIAL BUYHATKE CAB WARS TAB -->
+<div class="cabs-container" id="cabs-view">
+  <!-- Cab Wars Title & Smart Pickup Banner -->
+  <div class="cab-wars-badge-row">
+    <h3 class="cab-wars-title">🚖 Cab Wars Live</h3>
+    <span class="badge-cheapest">BEST FARE GUARANTEED</span>
+  </div>
+
+  <div class="smart-pickup-banner">
+    <span>💡</span>
+    <span><strong>Smart Pickup Tip:</strong> Pickup at Gate 2 saves ₹45 on Uber & Ola!</span>
+  </div>
+
+  <!-- Route Selector Card -->
+  <div class="cab-route-card">
+    <div class="route-inputs-wrapper">
+      <div class="route-dots-line">
+        <div class="dot-pickup"></div>
+        <div class="line-dashed"></div>
+        <div class="dot-drop"></div>
+      </div>
+      <div class="route-fields">
+        <input type="text" id="cab-pickup-input" class="route-input-field" value="Koramangala 4th Block, Bengaluru" placeholder="Enter pickup location">
+        <input type="text" id="cab-drop-input" class="route-input-field" value="Kempegowda International Airport (BLR)" placeholder="Enter drop location">
+      </div>
+      <button class="swap-route-btn" id="swap-cab-route-btn" title="Swap pickup and drop">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Presets -->
+    <div class="route-presets-row" id="route-presets-container">
+      <div class="route-preset-chip active" data-route="route_blr_airport">BLR Airport (38.5 km)</div>
+      <div class="route-preset-chip" data-route="route_blr_indiranagar">Indiranagar (10.4 km)</div>
+      <div class="route-preset-chip" data-route="route_blr_mgroad">MG Road (17.2 km)</div>
+      <div class="route-preset-chip" data-route="route_del_cybercity">Cyber City (27.8 km)</div>
+      <div class="route-preset-chip" data-route="route_bom_bkc">Mumbai BKC (14.6 km)</div>
+    </div>
+
+    <!-- Route Stats -->
+    <div class="route-meta-stats">
+      <div class="route-meta-stat-item">
+        <span>📍 Distance:</span>
+        <strong id="cab-distance-val">38.5 km</strong>
+      </div>
+      <div class="route-meta-stat-item">
+        <span>⏱️ Travel Time:</span>
+        <strong id="cab-time-val">62 mins</strong>
+      </div>
+      <div class="route-meta-stat-item">
+        <span>🚦 Traffic:</span>
+        <strong style="color: var(--bh-green);">Normal</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vehicle Category Filters -->
+  <div class="cab-vehicle-filters" id="cab-vehicle-filters">
+    <div class="vehicle-filter-btn active" data-vehicle="all">⚡ All Options</div>
+    <div class="vehicle-filter-btn" data-vehicle="auto">🛺 Auto</div>
+    <div class="vehicle-filter-btn" data-vehicle="mini">🚗 Mini / Go</div>
+    <div class="vehicle-filter-btn" data-vehicle="moto">🏍️ Bike Moto</div>
+    <div class="vehicle-filter-btn" data-vehicle="sedan">🚘 Prime Sedan</div>
+    <div class="vehicle-filter-btn" data-vehicle="suv">🚐 SUV XL</div>
+  </div>
+
+  <!-- Live Rides List -->
+  <div class="cabs-list" id="cabs-list-container">
+    <!-- Rendered dynamically by js/cabs.js -->
+  </div>
+</div>

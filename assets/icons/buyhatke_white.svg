@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Buyhatke smiling bag mascot -->
+  <path d="M24 38C24 35 26.5 32 30 32H70C73.5 32 76 35 76 38L72 78C72 82 68 85 64 85H36C32 85 28 82 28 78L24 38Z" fill="#FFFFFF"/>
+  <!-- Bag ears/handles -->
+  <path d="M38 32V24C38 19 43 15 48 15M62 32V24C62 19 57 15 52 15" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <!-- Eyes -->
+  <circle cx="42" cy="52" r="3.5" fill="#042F24"/>
+  <circle cx="58" cy="52" r="3.5" fill="#042F24"/>
+  <!-- Smile -->
+  <path d="M43 62Q50 68 57 62" stroke="#042F24" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>
